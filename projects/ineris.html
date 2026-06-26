@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme === "dark") document.documentElement.classList.add("dark");
+    })();
+  </script>
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Image Processing Internship at INERIS - Autonomous Drones for Real-Time Pollution Monitoring (Feb-Aug 2023)"
+    />
+    <meta name="author" content="Chris KAMAL YOUSSEF" />
+    <title>INERIS - Image Processing Internship</title>
+
+    <link rel="icon" type="image/x-icon" href="../assets/images/chris_ky_logo.png" />
+
+    <!-- Tailwind CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+  </head>
+
+  <body class="bg-[#fef8ec] dark:bg-[#2c2621] text-brown-800 dark:text-[#e8dccf]">
+    <!-- Loader -->
+    <div
+      id="loader"
+      class="fixed inset-0 z-50 flex items-center justify-center bg-[#fdf6ec] dark:bg-[#2a1f1a] transition-opacity duration-500"
+    >
+      <div class="loader-inner">
+        <div class="loader-ring"></div>
+        <div class="loader-icon">✦</div>
+      </div>
+    </div>
+
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50 bg-[#fef8ec] dark:bg-[#2c2621] shadow-md">
+      <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        <a href="../index.html#about" class="text-2xl font-bold">Chris KY</a>
+
+        <div class="hidden md:flex items-center gap-6 font-medium">
+          <nav class="flex space-x-6">
+            <a href="../index.html" class="nav-link">Home</a>
+            <a href="../index.html#portfolio" class="nav-link">Projects</a>
+            <a href="../contact.html" class="nav-link">Contact</a>
+          </nav>
+          <button id="toggleTheme" class="theme-toggle p-2 rounded-full ml-2">🌓</button>
+        </div>
+
+        <div class="md:hidden flex items-center gap-3">
+          <button id="nav-toggle" class="focus:outline-none">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2"
+              viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+          <button id="toggleThemeMobile" class="theme-toggle p-2 rounded-full order-2">🌓</button>
+        </div>
+      </div>
+
+      <div id="mobile-menu" class="md:hidden hidden flex flex-col items-start space-y-3 pb-6 px-6 font-medium">
+        <a href="../index.html" class="nav-link">Home</a>
+        <a href="../index.html#portfolio" class="nav-link">Projects</a>
+        <a href="../contact.html" class="nav-link">Contact</a>
+      </div>
+    </header>
+
+    <section class="px-6 py-12 max-w-5xl mx-auto">
+      <!-- Title -->
+      <h1 class="text-4xl md:text-5xl font-bold text-center mb-3">
+        Image Processing Internship at INERIS
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="text-center text-lg opacity-90 mb-8">
+        February 2023 to August 2023 &middot; Internship &middot; Verneuil-en-Halatte, France
+      </p>
+
+      <!-- Tags -->
+      <div class="mb-8 flex flex-wrap gap-2 justify-center">
+        <span class="tag-label">Python</span>
+        <span class="tag-label">Computer Vision</span>
+        <span class="tag-label">YOLOv5</span>
+        <span class="tag-label">Optical Flow</span>
+        <span class="tag-label">STM32</span>
+        <span class="tag-label">Digital Filters</span>
+        <span class="tag-label">Drones</span>
+        <span class="tag-label">Embedded</span>
+      </div>
+
+      <!-- Timeline Sections -->
+      <div class="space-y-16">
+
+        <!-- Overview -->
+        <div class="timeline-section">
+          <div class="timeline-line"><div class="timeline-pad"></div></div>
+          <div class="timeline-content">
+            <h2 class="text-2xl font-semibold mb-4">Overview</h2>
+            <ul class="space-y-3 list-none">
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  6-month internship at INERIS on the DESIHR research project: building a system to send a fleet of autonomous drones into large industrial fires and measure the pollution emitted in real time.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  Worked on two parts: image processing and computer vision for the drones, and embedded signal processing for CO sensors on the drone hardware.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  Achieved <strong>92% precision</strong> in fire and smoke detection, <strong>0.067 MSE</strong> on optical flow, and reduced CO sensor rise time from <strong>71ms to 21ms</strong> with 1% overshoot.
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- The Mission -->
+        <div class="timeline-section">
+          <div class="timeline-line"><div class="timeline-pad"></div></div>
+          <div class="timeline-content">
+            <h2 class="text-2xl font-semibold mb-4">1) The Mission</h2>
+            <ul class="space-y-3 list-none">
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  When a big factory fire breaks out, the goal is to send drones to map the pollution cloud and calculate the quantities of pollutants released.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  Worked with thermodynamic and environmental engineers to understand their equations and find out exactly what data the drones needed to collect:
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>Shape of the fire.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>Shape of the smoke plume.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>Speed of the smoke at different distances from the fire.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>Temperature of several points in the smoke.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>CO sensor readings, cleaned of noise.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- CO Sensors and STM32 -->
+        <div class="timeline-section">
+          <div class="timeline-line"><div class="timeline-pad"></div></div>
+          <div class="timeline-content">
+            <h2 class="text-2xl font-semibold mb-4">2) CO Sensors and STM32 Filtering</h2>
+            <ul class="space-y-3 list-none mb-6">
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  Programmed <strong>STM32 microcontrollers</strong> to acquire CO sensor data and apply digital filters in real time.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  Designed filters that reduced the signal rise time from <strong>71ms to 21ms</strong>, with only <strong>1% overshoot</strong> and no noise on the output.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  Built a small desktop software to test and visualize the sensor output in the lab before deploying on the drone.
+                </span>
+              </li>
+            </ul>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <img
+                  src="../assets/images/projects/INERIS/pass_bas_test_2.png"
+                  alt="CO sensor signal before and after digital filter"
+                  class="rounded-lg shadow-lg w-full"
+                />
+                <p class="text-sm opacity-60 mt-2">Signal before and after the digital filter on the same graph.</p>
+              </div>
+              <div>
+                <img
+                  src="../assets/images/projects/INERIS/IHM.PNG"
+                  alt="Lab software for sensor testing"
+                  class="rounded-lg shadow-lg w-full"
+                />
+                <p class="text-sm opacity-60 mt-2">Desktop software used to test the CO sensors in the lab.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Computer Vision - Fire Detection -->
+        <div class="timeline-section">
+          <div class="timeline-line"><div class="timeline-pad"></div></div>
+          <div class="timeline-content">
+            <h2 class="text-2xl font-semibold mb-4">3) Computer Vision - Fire and Smoke Detection</h2>
+            <ul class="space-y-3 list-none mb-6">
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  First tested a method from a research paper that used a neural network to <strong>segment fire pixels</strong>. With post-processing filters to remove noise and small regions, it gave decent results on close, clear footage.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  But it failed at distance, in fog, and could not detect smoke. It was not reliable enough for real conditions.
+                </span>
+              </li>
+            </ul>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+              <div>
+                <img
+                  src="../assets/images/projects/INERIS/Segmentation_input.PNG"
+                  alt="Raw fire image"
+                  class="rounded-lg shadow-lg w-full"
+                />
+                <p class="text-sm opacity-60 mt-2">Raw fire image used as input.</p>
+              </div>
+              <div>
+                <img
+                  src="../assets/images/projects/INERIS/Segmentation_output.PNG"
+                  alt="Fire segmentation output from neural network"
+                  class="rounded-lg shadow-lg w-full"
+                />
+                <p class="text-sm opacity-60 mt-2">Segmentation output from the paper's neural network.</p>
+              </div>
+            </div>
+
+            <ul class="space-y-3 list-none mb-6">
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  Switched to <strong>YOLOv5</strong>. Trained on public datasets plus our own footage. The model detected both fire and smoke with <strong>92% precision</strong>, even in fog, shadow, and clouds.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  This was a proof of concept, so no further training iterations were needed once the precision target was reached.
+                </span>
+              </li>
+            </ul>
+
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <img
+                  src="../assets/images/projects/INERIS/yolo_1.png"
+                  alt="YOLOv5 fire and smoke detection result 1"
+                  class="rounded-lg shadow-lg w-full"
+                />
+              </div>
+              <div>
+                <img
+                  src="../assets/images/projects/INERIS/yolo_2.png"
+                  alt="YOLOv5 fire and smoke detection result 2"
+                  class="rounded-lg shadow-lg w-full"
+                />
+              </div>
+              <div>
+                <img
+                  src="../assets/images/projects/INERIS/yolo_4.PNG"
+                  alt="YOLOv5 fire and smoke detection result 3"
+                  class="rounded-lg shadow-lg w-full"
+                />
+              </div>
+              <div>
+                <img
+                  src="../assets/images/projects/INERIS/yolo_5.PNG"
+                  alt="YOLOv5 fire and smoke detection result 4"
+                  class="rounded-lg shadow-lg w-full"
+                />
+              </div>
+            </div>
+            <p class="text-sm opacity-60 mt-2">YOLOv5 detections: fire and smoke under various conditions.</p>
+          </div>
+        </div>
+
+        <!-- Optical Flow -->
+        <div class="timeline-section">
+          <div class="timeline-line"><div class="timeline-pad"></div></div>
+          <div class="timeline-content">
+            <h2 class="text-2xl font-semibold mb-4">4) Smoke Speed with Optical Flow</h2>
+            <ul class="space-y-3 list-none mb-6">
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  To measure smoke speed at different distances from the fire, tested several optical flow algorithms: <strong>DeepFlow, Farneback, SimpleFlow, and RAFT</strong>.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  Evaluated them on real fire footage. RAFT gave the best results with a mean square error of <strong>0.067</strong>.
+                </span>
+              </li>
+            </ul>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <img
+                  src="../assets/images/projects/INERIS/DeepFlow.png"
+                  alt="Optical flow arrows on smoke (DeepFlow)"
+                  class="rounded-lg shadow-lg w-full"
+                />
+              </div>
+            </div>
+            <p class="text-sm opacity-60 mt-2">Optical flow velocity vectors overlaid on smoke footage.</p>
+          </div>
+        </div>
+
+        <!-- Thermal Camera -->
+        <div class="timeline-section">
+          <div class="timeline-line"><div class="timeline-pad"></div></div>
+          <div class="timeline-content">
+            <h2 class="text-2xl font-semibold mb-4">5) Temperature with Thermal Camera</h2>
+            <ul class="space-y-3 list-none mb-6">
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  Used a thermal camera mounted on the drone to measure temperature at multiple points in the smoke plume.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  Temperature data feeds directly into the environmental engineers' pollution equations.
+                </span>
+              </li>
+            </ul>
+
+            <!--div class="flex justify-center">
+              <div class="max-w-sm w-full">
+                <img
+                  src="../assets/images/projects/INERIS/thermal_camera.png"
+                  alt="Thermal camera image of smoke temperature"
+                  class="rounded-lg shadow-lg w-full"
+                />
+                <p class="text-sm opacity-60 mt-2">Thermal camera output showing temperature distribution in the smoke.</p>
+              </div>
+            </div-->
+          </div>
+        </div>
+
+        <!-- Full Pipeline -->
+        <div class="timeline-section">
+          <div class="timeline-line"><div class="timeline-pad"></div></div>
+          <div class="timeline-content">
+            <h2 class="text-2xl font-semibold mb-4">6) Full Pipeline</h2>
+            <ul class="space-y-3 list-none">
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  Combined all the outputs (fire/smoke shape from YOLO, smoke speed from RAFT, temperature from the thermal camera, CO readings from the STM32) into a single pipeline.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  The pipeline inserts all values into the thermodynamic equations to produce a real-time pollution map of the fire site.
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Field Tests -->
+        <div class="timeline-section">
+          <div class="timeline-line"><div class="timeline-pad"></div></div>
+          <div class="timeline-content">
+            <h2 class="text-2xl font-semibold mb-4">7) Field Tests in Normandy</h2>
+            <ul class="space-y-3 list-none mb-6">
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  Organized and participated in a 3-day field test in Le Havre, Normandy, to validate the full system with real fires under realistic conditions.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  Ran the complete pipeline live and verified that all sensors, vision models, and data processing worked together on site.
+                </span>
+              </li>
+            </ul>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <img
+                  src="../assets/images/projects/INERIS/drone.png"
+                  alt="Drones flying at the test site"
+                  class="rounded-lg shadow-lg w-full"
+                />
+              </div>
+              <div>
+                <img
+                  src="../assets/images/projects/INERIS/me.png"
+                  alt="Chris with the drone fleet at the test site"
+                  class="rounded-2xl shadow-lg w-full"
+                />
+                <p class="text-sm opacity-60 mt-2 text-center">At the test site with the drone fleet — Le Havre, 2023.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- What I Did -->
+        <div class="timeline-section">
+          <div class="timeline-line"><div class="timeline-pad"></div></div>
+          <div class="timeline-content">
+            <h2 class="text-2xl font-semibold mb-4">My Contribution</h2>
+            <ul class="space-y-3 list-none">
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>Worked with engineers to define what data the drones needed to collect.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>Programmed STM32 boards and designed digital filters for CO sensor acquisition.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>Built a lab tool to test and validate the sensors before field deployment.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>Tested a segmentation-based approach for fire detection, identified its limits, and switched to YOLOv5.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>Trained YOLOv5 on mixed data (public + our own) to detect fire and smoke at 92% precision.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>Evaluated multiple optical flow algorithms on real fire footage and selected the best one.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>Built the full pipeline combining all data sources into the pollution calculation.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>Organized and participated in the 3-day field tests in Le Havre.</span>
+              </li>
+            </ul>
+
+            <div class="mt-6">
+              <p class="font-semibold mb-2">Tech Stack</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="tag-label">Python</span>
+                <span class="tag-label">YOLOv5</span>
+                <span class="tag-label">RAFT</span>
+                <span class="tag-label">OpenCV</span>
+                <span class="tag-label">STM32</span>
+                <span class="tag-label">Digital Signal Processing</span>
+                <span class="tag-label">Thermal Imaging</span>
+                <span class="tag-label">Drones</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <div class="max-w-4xl mx-auto flex flex-col items-center justify-center gap-2 text-center pb-10">
+      <p class="text-sm">© 2026 Chris KY - Built with Passion</p>
+    </div>
+
+    <!-- JS -->
+    <script src="../assets/js/script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme === "dark") document.documentElement.classList.add("dark");
+    })();
+  </script>
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Python Developer at Airbus - Refactoring legacy codebase with Design Patterns (Feb-Aug 2024)"
+    />
+    <meta name="author" content="Chris KAMAL YOUSSEF" />
+    <title>Airbus - Python Developer</title>
+
+    <link rel="icon" type="image/x-icon" href="../assets/images/chris_ky_logo.png" />
+
+    <!-- Tailwind CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+  </head>
+
+  <body class="bg-[#fef8ec] dark:bg-[#2c2621] text-brown-800 dark:text-[#e8dccf]">
+    <!-- Loader -->
+    <div
+      id="loader"
+      class="fixed inset-0 z-50 flex items-center justify-center bg-[#fdf6ec] dark:bg-[#2a1f1a] transition-opacity duration-500"
+    >
+      <div class="loader-inner">
+        <div class="loader-ring"></div>
+        <div class="loader-icon">✦</div>
+      </div>
+    </div>
+
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50 bg-[#fef8ec] dark:bg-[#2c2621] shadow-md">
+      <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        <a href="../index.html#about" class="text-2xl font-bold">Chris KY</a>
+
+        <div class="hidden md:flex items-center gap-6 font-medium">
+          <nav class="flex space-x-6">
+            <a href="../index.html" class="nav-link">Home</a>
+            <a href="../index.html#portfolio" class="nav-link">Projects</a>
+            <a href="../contact.html" class="nav-link">Contact</a>
+          </nav>
+          <button id="toggleTheme" class="theme-toggle p-2 rounded-full ml-2">🌓</button>
+        </div>
+
+        <div class="md:hidden flex items-center gap-3">
+          <button id="nav-toggle" class="focus:outline-none">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2"
+              viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+          <button id="toggleThemeMobile" class="theme-toggle p-2 rounded-full order-2">🌓</button>
+        </div>
+      </div>
+
+      <div id="mobile-menu" class="md:hidden hidden flex flex-col items-start space-y-3 pb-6 px-6 font-medium">
+        <a href="../index.html" class="nav-link">Home</a>
+        <a href="../index.html#portfolio" class="nav-link">Projects</a>
+        <a href="../contact.html" class="nav-link">Contact</a>
+      </div>
+    </header>
+
+    <section class="px-6 py-12 max-w-5xl mx-auto">
+      <!-- Title -->
+      <h1 class="text-4xl md:text-5xl font-bold text-center mb-3">
+        Python Developer at Airbus
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="text-center text-lg opacity-90 mb-8">
+        February 2024 to August 2024 &middot; Contract &middot; Toulouse, France
+      </p>
+
+      <!-- Tags -->
+      <div class="mb-8 flex flex-wrap gap-2 justify-center">
+        <span class="tag-label">Python</span>
+        <span class="tag-label">Design Patterns</span>
+        <span class="tag-label">Refactoring</span>
+        <span class="tag-label">Linux</span>
+        <span class="tag-label">Git</span>
+        <span class="tag-label">VS Code</span>
+        <span class="tag-label">Aerospace</span>
+      </div>
+
+      <!-- Timeline Sections -->
+      <div class="space-y-16">
+
+        <!-- Overview -->
+        <div class="timeline-section">
+          <div class="timeline-line"><div class="timeline-pad"></div></div>
+          <div class="timeline-content">
+            <h2 class="text-2xl font-semibold mb-4">Overview</h2>
+            <ul class="space-y-3 list-none">
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  6-month contract at Airbus to refactor a large legacy Python codebase used by mechanical engineers.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  Rewrote the code using design patterns, added unit tests, packaged it as an internal library,
+                  and built an end-to-end pipeline for the engineering team.
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- The Legacy Codebase -->
+        <div class="timeline-section">
+          <div class="timeline-line"><div class="timeline-pad"></div></div>
+          <div class="timeline-content">
+            <h2 class="text-2xl font-semibold mb-4">1) The Legacy Codebase</h2>
+            <ul class="space-y-3 list-none">
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>Large collection of Python scripts with no structure, no unit tests, and duplicated logic throughout.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>Hard to read, hard to modify, impossible to test reliably.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  First step: read and understand all the existing code to know what it was doing before changing anything.
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Design Patterns -->
+        <div class="timeline-section">
+          <div class="timeline-line"><div class="timeline-pad"></div></div>
+          <div class="timeline-content">
+            <h2 class="text-2xl font-semibold mb-4">2) Refactoring with Design Patterns</h2>
+            <ul class="space-y-3 list-none">
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  Chose the right patterns for each problem. Two main ones used:
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  <strong>Builder:</strong> to construct complex objects step by step without messy constructors.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  <strong>Strategy:</strong> to swap algorithms or behaviors without changing the surrounding code.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  Wrote <strong>unit tests</strong> alongside the refactored code to make sure behavior was preserved and future changes safe.
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Library and Pipeline -->
+        <div class="timeline-section">
+          <div class="timeline-line"><div class="timeline-pad"></div></div>
+          <div class="timeline-content">
+            <h2 class="text-2xl font-semibold mb-4">3) Internal Library and Pipeline</h2>
+            <ul class="space-y-3 list-none">
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  Packaged the refactored code as an <strong>internal Python library</strong> used by multiple teams at Airbus.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  Talked with the mechanical engineers to understand their workflow, then built a full
+                  <strong>end-to-end pipeline</strong> covering data ingestion, processing, and output.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  Engineers could use clean, standard interfaces instead of copy-pasting old scripts.
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- My Contributions -->
+        <div class="timeline-section">
+          <div class="timeline-line"><div class="timeline-pad"></div></div>
+          <div class="timeline-content">
+            <h2 class="text-2xl font-semibold mb-4">What I Did</h2>
+            <ul class="space-y-3 list-none">
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>Read and understood the full legacy codebase.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>Chose the design patterns that fit the problems, then rewrote the code.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>Wrote unit tests for the new code.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>Packaged everything into an internal library.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>Talked with the engineers, understood their needs, and built the pipeline for them.</span>
+              </li>
+            </ul>
+
+            <div class="mt-6">
+              <p class="font-semibold mb-2">Tech Stack</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="tag-label">Python</span>
+                <span class="tag-label">OOP</span>
+                <span class="tag-label">Builder Pattern</span>
+                <span class="tag-label">Strategy Pattern</span>
+                <span class="tag-label">Unit Tests</span>
+                <span class="tag-label">Linux</span>
+                <span class="tag-label">Git</span>
+                <span class="tag-label">VS Code</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Photo -->
+      <div class="mt-16 flex flex-col items-center gap-3">
+        <img
+          src="../assets/images/projects/Airbus/Airbus_selfie.png"
+          alt="Chris KY in front of the Airbus building"
+          class="rounded-2xl shadow-lg max-w-sm w-full"
+        />
+        <p class="text-sm opacity-60">In front of the Airbus site, Toulouse — 2024</p>
+      </div>
+
+    </section>
+
+    <!-- Footer -->
+    <div class="max-w-4xl mx-auto flex flex-col items-center justify-center gap-2 text-center pb-10">
+      <p class="text-sm">© 2026 Chris KY - Built with Passion</p>
+    </div>
+
+    <!-- JS -->
+    <script src="../assets/js/script.js"></script>
+  </body>
+</html>

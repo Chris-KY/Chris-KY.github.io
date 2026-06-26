@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme === "dark") document.documentElement.classList.add("dark");
+    })();
+  </script>
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Why I Love Intelligent Robots — Chris KY Blog" />
+    <meta name="author" content="Chris KAMAL YOUSSEF" />
+    <title>Why I Love Intelligent Robots — Chris KY</title>
+
+    <link rel="icon" type="image/x-icon" href="../../../assets/images/chris_ky_logo.png" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../../assets/css/styles.css" />
+  </head>
+
+  <body class="bg-[#fef8ec] dark:bg-[#2c2621] text-brown-800 dark:text-[#e8dccf]">
+    <!-- Loader -->
+    <div
+      id="loader"
+      class="fixed inset-0 z-50 flex items-center justify-center bg-[#fdf6ec] dark:bg-[#2a1f1a] transition-opacity duration-500"
+    >
+      <div class="loader-inner">
+        <div class="loader-ring"></div>
+        <div class="loader-icon">✦</div>
+      </div>
+    </div>
+
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50 bg-[#fef8ec] dark:bg-[#2c2621] shadow-md">
+      <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        <a href="../../../index.html" class="text-2xl font-bold">Chris KY</a>
+
+        <div class="hidden md:flex items-center gap-6 font-medium">
+          <nav class="flex space-x-6">
+            <a href="../../../index.html" class="nav-link">← Portfolio</a>
+            <a href="../../index.html" class="nav-link">Blog Home</a>
+          </nav>
+          <button id="toggleTheme" class="theme-toggle p-2 rounded-full ml-2">🌓</button>
+        </div>
+
+        <div class="md:hidden flex items-center gap-3">
+          <button id="nav-toggle" class="focus:outline-none">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2"
+              viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+          <button id="toggleThemeMobile" class="theme-toggle p-2 rounded-full order-2">🌓</button>
+        </div>
+      </div>
+
+      <div id="mobile-menu" class="md:hidden hidden flex flex-col items-start space-y-3 pb-6 px-6 font-medium">
+        <a href="../../../index.html" class="nav-link">← Portfolio</a>
+        <a href="../../index.html" class="nav-link">Blog Home</a>
+      </div>
+    </header>
+
+    <article class="px-6 py-12 max-w-2xl mx-auto">
+      <p class="text-xs uppercase tracking-widest opacity-50 mb-4">May 2026</p>
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Why I Love Intelligent Robots</h1>
+      <p class="text-lg opacity-60 mb-10">How a childhood love for inventions became my path into electronics, computer vision, AI, and intelligent robots.</p>
+
+      <div class="space-y-5 leading-relaxed text-lg opacity-90">
+        <p>Since I was a kid, I was always interested in new inventions.</p>
+
+        <p>Even when I was watching cartoons, I was not only watching the story. I was watching the smart characters who were building machines, solving problems, and creating new tools. In Ninja Turtles, I liked watching Donatello invent things. In Mickey Mouse magazine, I liked Gyro Gearloose because he was always creating something new.</p>
+
+        <p>For me, invention was always exciting. The idea that a person can imagine something, build it, test it, improve it, and make it useful is one of the most interesting things in the world.</p>
+
+        <p>I never wanted to do only routine work. I did not want to repeat the same tasks every day without creating anything. I wanted to build, invent, think, test, fail, improve, and have an impact.</p>
+
+        <p>This is why intelligent robots became very special to me.</p>
+
+        <p>A robot is not only hardware. It is not only software. It is the meeting point between many worlds: electronics, mechanics, sensors, computer vision, artificial intelligence, control, and real world testing. A robot has to understand the world around it, make decisions, and act in a physical environment. That is what makes it exciting.</p>
+
+        <p>To follow this path, I studied electronics in my bachelor degree, then I continued with a master degree in Intelligent Robots and Information Processing. I wanted to understand both sides: the physical system and the intelligence inside it.</p>
+
+        <p>One of the moments that made my passion even stronger was during my bachelor, when I worked with my colleagues on a robot for the Coupe de France de Robotique. It was not only a school project. It was a real challenge, with real problems, real constraints, and real teamwork.</p>
+
+        <p>That experience made me understand something clearly: I did not become an engineer just to have a job. I became an engineer because I enjoy building things.</p>
+
+        <p>For me, intelligent robots are not only machines. They are a way to turn ideas into reality.</p>
+      </div>
+    </article>
+
+    <!-- Footer -->
+    <div class="max-w-2xl mx-auto flex flex-col items-center justify-center gap-2 text-center pb-10">
+      <a href="../../index.html" class="text-sm opacity-50 hover:opacity-100 transition-opacity">← Back to Blog</a>
+    </div>
+
+    <script src="../../../assets/js/script.js"></script>
+  </body>
+</html>

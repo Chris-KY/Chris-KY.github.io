@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme === "dark") document.documentElement.classList.add("dark");
+    })();
+  </script>
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Nicomatic: 9-month freelance project replacing GPS on a drone with camera and IMU sensors for fully autonomous GNSS-denied flight on a Raspberry Pi 4."
+    />
+    <meta name="author" content="Chris KAMAL YOUSSEF" />
+    <title>Nicomatic: GNSS-Denied Autonomous Drone</title>
+
+    <link rel="icon" type="image/x-icon" href="../assets/images/chris_ky_logo.png" />
+
+    <!-- Tailwind CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+  </head>
+
+  <body class="bg-[#fef8ec] dark:bg-[#2c2621] text-brown-800 dark:text-[#e8dccf]">
+    <!-- Loader -->
+    <div
+      id="loader"
+      class="fixed inset-0 z-50 flex items-center justify-center bg-[#fdf6ec] dark:bg-[#2a1f1a] transition-opacity duration-500"
+    >
+      <div class="loader-inner">
+        <div class="loader-ring"></div>
+        <div class="loader-icon">✦</div>
+      </div>
+    </div>
+
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50 bg-[#fef8ec] dark:bg-[#2c2621] shadow-md">
+      <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        <a href="../index.html#about" class="text-2xl font-bold">Chris KY</a>
+
+        <div class="hidden md:flex items-center gap-6 font-medium">
+          <nav class="flex space-x-6">
+            <a href="../index.html" class="nav-link">Home</a>
+            <a href="../index.html#portfolio" class="nav-link">Projects</a>
+            <a href="../contact.html" class="nav-link">Contact</a>
+          </nav>
+          <button id="toggleTheme" class="theme-toggle p-2 rounded-full ml-2">🌓</button>
+        </div>
+
+        <div class="md:hidden flex items-center gap-3">
+          <button id="nav-toggle" class="focus:outline-none">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2"
+              viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+          <button id="toggleThemeMobile" class="theme-toggle p-2 rounded-full order-2">🌓</button>
+        </div>
+      </div>
+
+      <div id="mobile-menu" class="md:hidden hidden flex flex-col items-start space-y-3 pb-6 px-6 font-medium">
+        <a href="../index.html" class="nav-link">Home</a>
+        <a href="../index.html#portfolio" class="nav-link">Projects</a>
+        <a href="../contact.html" class="nav-link">Contact</a>
+      </div>
+    </header>
+
+    <section class="px-6 py-12 max-w-5xl mx-auto">
+      <!-- Title -->
+      <h1 class="text-4xl md:text-5xl font-bold text-center mb-3">
+        Nicomatic: GNSS-Denied Autonomous Drone
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="text-center text-lg opacity-90 mb-8">
+        Freelance &middot; 9 months &middot; Solo
+      </p>
+
+      <!-- Tags -->
+      <div class="mb-8 flex flex-wrap gap-2 justify-center">
+        <span class="tag-label">Computer Vision</span>
+        <span class="tag-label">Signal Processing</span>
+        <span class="tag-label">Visual Odometry</span>
+        <span class="tag-label">Map Matching</span>
+        <span class="tag-label">Object Tracking</span>
+        <span class="tag-label">MAVLink</span>
+        <span class="tag-label">INAV</span>
+        <span class="tag-label">Raspberry Pi 4</span>
+        <span class="tag-label">Python</span>
+        <span class="tag-label">Ubuntu</span>
+        <span class="tag-label">IMU</span>
+        <span class="tag-label">Real-Time</span>
+      </div>
+
+      <!-- Timeline Sections -->
+      <div class="space-y-16">
+
+        <!-- Overview -->
+        <div class="timeline-section">
+          <div class="timeline-line"><div class="timeline-pad"></div></div>
+          <div class="timeline-content">
+            <h2 class="text-2xl font-semibold mb-4">Overview</h2>
+            <ul class="space-y-3 list-none">
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  9-month freelance mission for Nicomatic: make a drone fully autonomous without GPS,
+                  replacing it entirely with camera and IMU sensors.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  Hard constraint: everything runs on a <strong>Raspberry Pi 4</strong> in real time.
+                  No deep learning, too heavy. All algorithms had to be lightweight and fast enough
+                  to keep up with the drone's flight loop.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  Worked alone on all parts of the project across four distinct modules.
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Module 1: GNSS Denied -->
+        <div class="timeline-section">
+          <div class="timeline-line"><div class="timeline-pad"></div></div>
+          <div class="timeline-content">
+            <h2 class="text-2xl font-semibold mb-6">1) GNSS Denied</h2>
+
+            <!-- 1a: Preloaded Map -->
+            <div class="mb-10">
+              <h3 class="text-xl font-semibold mb-4">a) Preloaded Map Matching</h3>
+              <ul class="space-y-3 list-none">
+                <li class="flex items-start gap-3">
+                  <div class="timeline-dot"></div>
+                  <span>
+                    The drone carries a preloaded aerial map of the mission area.
+                    During flight, the downward camera captures live images that are matched against the stored map
+                    to determine the exact current position.
+                  </span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <div class="timeline-dot"></div>
+                  <span>
+                    Used image matching techniques that work under rotation, scale change, and partial occlusion,
+                    because the camera angle and altitude are never perfectly stable.
+                  </span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <div class="timeline-dot"></div>
+                  <span>
+                    The map is also updated in-flight: new imagery captured by the drone is merged back in,
+                    keeping the reference map fresh for areas that have changed since it was preloaded.
+                  </span>
+                </li>
+              </ul>
+              <div class="mt-6 space-y-6">
+                <figure>
+                  <img src="../assets/images/projects/SkyAIs/projection.png" alt="Map matching demo" class="rounded-2xl shadow-lg w-full object-cover" />
+                  <figcaption class="mt-2 text-sm text-gray-400 text-center">Keypoint matching to project the camera image onto the map to determine GNSS location.</figcaption>
+                </figure>
+                <figure>
+                  <video controls class="rounded-2xl shadow-lg w-full" preload="metadata">
+                    <source src="../assets/images/projects/SkyAIs/video_v1_h264.mp4" type="video/mp4" />
+                  </video>
+                  <figcaption class="mt-2 text-sm text-gray-400 text-center">Full route demo : the large image is the live camera feed, the small inset is the map, and the red dot marks the estimated camera location on the map in real time.</figcaption>
+                </figure>
+                <figure>
+                  <video controls class="rounded-2xl shadow-lg w-full" preload="metadata">
+                    <source src="../assets/images/projects/SkyAIs/projection_StMathurin_4_h264.mp4" type="video/mp4" />
+                  </video>
+                  <figcaption class="mt-2 text-sm text-gray-400 text-center">Map update : the reference map is refreshed in-flight by merging new imagery captured by the drone.</figcaption>
+                </figure>
+              </div>
+            </div>
+
+            <!-- 1b: Visual Odometry -->
+            <div>
+              <h3 class="text-xl font-semibold mb-4">b) Visual Odometry</h3>
+              <ul class="space-y-3 list-none">
+                <li class="flex items-start gap-3">
+                  <div class="timeline-dot"></div>
+                  <span>
+                    Each frame <em>t</em> is compared against <em>t-1</em> and <em>t-2</em> to calculate the shift
+                    in translation and rotation between frames.
+                  </span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <div class="timeline-dot"></div>
+                  <span>
+                    Combined with IMU data (accelerometer and gyroscope) to correct for drift.
+                    By knowing the GNSS location at frame zero, you can estimate the full trajectory from there.
+                  </span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <div class="timeline-dot"></div>
+                  <span>
+                    Combined with the map matching, this gave a reliable localization system solid enough that we sold it.
+                  </span>
+                </li>
+              </ul>
+              <div class="mt-6 space-y-6">
+                <figure>
+                  <img src="../assets/images/projects/SkyAIs/matching.png" alt="Visual odometry demo" class="rounded-2xl shadow-lg w-full object-cover" />
+                  <figcaption class="mt-2 text-sm text-gray-400 text-center">Comparing the current frame with the previous one (t−1) to estimate the translation and rotation performed by the drone.</figcaption>
+                </figure>
+                <!--img src="../assets/images/projects/Nicomatic/vo_2.jpg" alt="Visual odometry demo" class="rounded-2xl shadow-lg w-full object-cover" />
+                <video src="../assets/images/projects/SkyAIs/video_v1.mp4" controls class="rounded-2xl shadow-lg w-full"></video>
+                <video src="../assets/videos/projects/Nicomatic/vo_2.mp4" controls class="rounded-2xl shadow-lg w-full"></video-->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Module 2: Ground Object Tracking -->
+        <div class="timeline-section">
+          <div class="timeline-line"><div class="timeline-pad"></div></div>
+          <div class="timeline-content">
+            <h2 class="text-2xl font-semibold mb-4">2) Ground Object Tracking</h2>
+            <ul class="space-y-3 list-none">
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  Track moving objects on the ground while the drone itself is moving.
+                  No neural network: too slow for real-time on a Pi 4.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  Used keypoint detection on frames <em>t</em>, <em>t-1</em>, and <em>t-2</em> to measure
+                  the global background shift. Anything that doesn't move consistently with that shift is a moving object.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  Added optical flow and a Kalman filter on top to combine both sources and smooth the result.
+                  End result: fast and stable detection of moving objects even while the drone is flying around.
+                </span>
+              </li>
+            </ul>
+            <div class="mt-6">
+              <figure>
+                <video controls class="rounded-2xl shadow-lg w-full" preload="metadata">
+                  <source src="../assets/images/projects/SkyAIs/tracking_birds.webm" type="video/webm" />
+                </video>
+                <figcaption class="mt-2 text-sm text-gray-400 text-center">Tracking drones and birds in real time.</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+
+        <!-- Module 3: Sound Control -->
+        <div class="timeline-section">
+          <div class="timeline-line"><div class="timeline-pad"></div></div>
+          <div class="timeline-content">
+            <h2 class="text-2xl font-semibold mb-4">3) Sound Control</h2>
+            <ul class="space-y-3 list-none">
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  Each command (ARM, up, down, start mission...) maps to a specific audio frequency.
+                  The drone detects and classifies them using signal processing in real time.
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Module 4: Android App -->
+        <div class="timeline-section">
+          <div class="timeline-line"><div class="timeline-pad"></div></div>
+          <div class="timeline-content">
+            <h2 class="text-2xl font-semibold mb-4">4) Android App</h2>
+            <ul class="space-y-3 list-none">
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  App with a geolocated map: tap a point on the map to get its GNSS coordinates,
+                  then send them to the Pi 4 to start a mission and fly to that location.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  Sends commands to start different Python scripts on the drone and receives logs back.
+                  Connects over Wi-Fi or Bluetooth.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  If the drone goes out of range, the mission keeps running. When it comes back in range,
+                  it reconnects automatically and continues normally.
+                </span>
+              </li>
+            </ul>
+            <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+              <img src="../assets/images/projects/Nicomatic/app_1.jpg" alt="Android app map view" class="rounded-2xl shadow-lg w-full object-cover" />
+              <img src="../assets/images/projects/Nicomatic/app_2.jpg" alt="Android app control panel" class="rounded-2xl shadow-lg w-full object-cover" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Tech Stack -->
+        <div class="timeline-section">
+          <div class="timeline-line"><div class="timeline-pad"></div></div>
+          <div class="timeline-content">
+            <h2 class="text-2xl font-semibold mb-4">Tech Stack</h2>
+            <div class="flex flex-wrap gap-2">
+              <span class="tag-label">Python</span>
+              <span class="tag-label">Computer Vision</span>
+              <span class="tag-label">Signal Processing</span>
+              <span class="tag-label">MAVLink</span>
+              <span class="tag-label">INAV</span>
+              <span class="tag-label">Raspberry Pi 4</span>
+              <span class="tag-label">Ubuntu</span>
+              <span class="tag-label">IMU</span>
+              <span class="tag-label">OpenCV</span>
+              <span class="tag-label">Visual Odometry</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <div class="max-w-4xl mx-auto flex flex-col items-center justify-center gap-2 text-center pb-10">
+      <p class="text-sm">© 2026 Chris KY - Built with Passion</p>
+    </div>
+
+    <!-- JS -->
+    <script src="../assets/js/script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme === "dark") document.documentElement.classList.add("dark");
+    })();
+  </script>
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Shark Robotics — 6 months building an autonomous firefighter robot. Computer Vision, AI, ROS 2, thermal cameras, obstacle avoidance."
+    />
+    <meta name="author" content="Chris KAMAL YOUSSEF" />
+    <title>Shark Robotics: Autonomous Firefighter Robot</title>
+
+    <link rel="icon" type="image/x-icon" href="../assets/images/chris_ky_logo.png" />
+
+    <!-- Tailwind CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+  </head>
+
+  <body class="bg-[#fef8ec] dark:bg-[#2c2621] text-brown-800 dark:text-[#e8dccf]">
+    <!-- Loader -->
+    <div
+      id="loader"
+      class="fixed inset-0 z-50 flex items-center justify-center bg-[#fdf6ec] dark:bg-[#2a1f1a] transition-opacity duration-500"
+    >
+      <div class="loader-inner">
+        <div class="loader-ring"></div>
+        <div class="loader-icon">✦</div>
+      </div>
+    </div>
+
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50 bg-[#fef8ec] dark:bg-[#2c2621] shadow-md">
+      <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        <a href="../index.html#about" class="text-2xl font-bold">Chris KY</a>
+
+        <div class="hidden md:flex items-center gap-6 font-medium">
+          <nav class="flex space-x-6">
+            <a href="../index.html" class="nav-link">Home</a>
+            <a href="../index.html#portfolio" class="nav-link">Projects</a>
+            <a href="../contact.html" class="nav-link">Contact</a>
+          </nav>
+          <button id="toggleTheme" class="theme-toggle p-2 rounded-full ml-2">🌓</button>
+        </div>
+
+        <div class="md:hidden flex items-center gap-3">
+          <button id="nav-toggle" class="focus:outline-none">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2"
+              viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+          <button id="toggleThemeMobile" class="theme-toggle p-2 rounded-full order-2">🌓</button>
+        </div>
+      </div>
+
+      <div id="mobile-menu" class="md:hidden hidden flex flex-col items-start space-y-3 pb-6 px-6 font-medium">
+        <a href="../index.html" class="nav-link">Home</a>
+        <a href="../index.html#portfolio" class="nav-link">Projects</a>
+        <a href="../contact.html" class="nav-link">Contact</a>
+      </div>
+    </header>
+
+    <section class="px-6 py-12 max-w-5xl mx-auto">
+      <!-- Title -->
+      <h1 class="text-4xl md:text-5xl font-bold text-center mb-3">
+        Shark Robotics: Autonomous Firefighter Robot
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="text-center text-lg opacity-90 mb-8">
+        6 months &middot; Computer Vision & AI Engineer &middot; Robotics
+      </p>
+
+      <!-- Tags -->
+      <div class="mb-8 flex flex-wrap gap-2 justify-center">
+        <span class="tag-label">ROS 2</span>
+        <span class="tag-label">Computer Vision</span>
+        <span class="tag-label">YOLO</span>
+        <span class="tag-label">Thermal Camera</span>
+        <span class="tag-label">RGB-Thermal Fusion</span>
+        <span class="tag-label">Dijkstra</span>
+        <span class="tag-label">Obstacle Avoidance</span>
+        <span class="tag-label">Ultrasound Sensors</span>
+        <span class="tag-label">RTSP</span>
+        <span class="tag-label">C++</span>
+        <span class="tag-label">Python</span>
+        <span class="tag-label">Ubuntu</span>
+        <span class="tag-label">Gazebo</span>
+        <span class="tag-label">RViz</span>
+      </div>
+
+      <!-- Hero Image: Autonomous Robot -->
+      <div class="mb-12">
+        <img
+          src="../assets/images/projects/Shark/arm.jpeg"
+          alt="Shark Robotics autonomous firefighter robot"
+          class="w-full rounded-xl object-cover max-h-96"
+        />
+      </div>
+
+      <!-- Timeline Sections -->
+      <div class="space-y-16">
+
+        <!-- Overview -->
+        <div class="timeline-section">
+          <div class="timeline-line"><div class="timeline-pad"></div></div>
+          <div class="timeline-content">
+            <h2 class="text-2xl font-semibold mb-4">Overview</h2>
+            <ul class="space-y-3 list-none">
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  I worked on two main things. First, maintaining the existing robot fleet: I was responsible for all cameras and sensors across every robot. Second, working on a brand new autonomous firefighter robot, which is where most of my time went. I handled the AI, computer vision, sensors, and decision-making side of it.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  The autonomous robot stays parked in a building's parking lot or factory, on standby. When a fire breaks out, it navigates to the scene on its own, finds the source of the fire, and either extinguishes it or holds position spraying water until firefighters arrive. Then it returns to its spot.
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- The Challenge -->
+        <div class="timeline-section">
+          <div class="timeline-line"><div class="timeline-pad"></div></div>
+          <div class="timeline-content">
+            <h2 class="text-2xl font-semibold mb-4">The Challenge: Worst-Case Everything</h2>
+            <ul class="space-y-3 list-none">
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  This robot goes into active fire scenes. That means every system had to be designed for the worst case, not the average one.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  <strong>Smoke</strong> kills the RGB camera feed. Models trained on clear images just fail.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  <strong>Lighting</strong> is completely unpredictable, anywhere from pitch black to blinding flames.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  <strong>People are running</strong> randomly across the scene with no predictable pattern.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  <strong>The map is unknown.</strong> The robot has no prior knowledge of the layout it's navigating.
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Human Detection -->
+        <div class="timeline-section">
+          <div class="timeline-line"><div class="timeline-pad"></div></div>
+          <div class="timeline-content">
+            <h2 class="text-2xl font-semibold mb-4">1) Human Detection in Smoke using RGB Camera</h2>
+            <ul class="space-y-3 list-none">
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  I trained a neural network and built the full detection pipeline to find people even when there's heavy smoke in the camera feed.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  A model trained on clean images doesn't hold up in a smoky environment. I had to build and validate the pipeline specifically on smoke-degraded data to get it to work reliably.
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Fire Detection -->
+        <div class="timeline-section">
+          <div class="timeline-line"><div class="timeline-pad"></div></div>
+          <div class="timeline-content">
+            <h2 class="text-2xl font-semibold mb-4">2) Fire Detection: RGB + Thermal Fusion</h2>
+            <ul class="space-y-3 list-none">
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  Once the robot reaches the fire, it needs to pinpoint the source to aim the water pump at it. I combined the RGB camera with a thermal camera to do this.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  Neither sensor works well on its own here. RGB struggles with smoke and extreme lighting. Thermal alone lacks spatial precision. Together they cover each other's blind spots: you can catch hidden heat sources and large fires that either sensor would miss solo.
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Autonomous Navigation -->
+        <div class="timeline-section">
+          <div class="timeline-line"><div class="timeline-pad"></div></div>
+          <div class="timeline-content">
+            <h2 class="text-2xl font-semibold mb-4">3) Autonomous Navigation</h2>
+            <ul class="space-y-3 list-none">
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  I implemented <strong>Dijkstra's algorithm</strong> for path planning, routing the robot from its home point to the fire location and back on the fastest available path.
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Obstacle Detection -->
+        <div class="timeline-section">
+          <div class="timeline-line"><div class="timeline-pad"></div></div>
+          <div class="timeline-content">
+            <h2 class="text-2xl font-semibold mb-4">4) Obstacle Detection</h2>
+            <ul class="space-y-3 list-none">
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  I set up <strong>16 ultrasound sensors</strong> placed around the robot. They all work together so the robot can detect obstacles even in deep smoke where cameras are blind.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  Using an array of 16 sensors instead of a single one makes the detection much more reliable. A lone sensor gives unreliable readings in a chaotic environment. The full array doesn't.
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Simulation -->
+        <div class="timeline-section">
+          <div class="timeline-line"><div class="timeline-pad"></div></div>
+          <div class="timeline-content">
+            <h2 class="text-2xl font-semibold mb-4">5) Simulation and Real Robot</h2>
+            <ul class="space-y-3 list-none">
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  All systems were developed and validated in <strong>Gazebo</strong> simulation with <strong>RViz</strong> for visualization before going anywhere near real hardware.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  I worked on both the simulation environment and the real robots, and we tested everything on real fires we set up ourselves.
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Existing Fleet -->
+        <div class="timeline-section">
+          <div class="timeline-line"><div class="timeline-pad"></div></div>
+          <div class="timeline-content">
+            <h2 class="text-2xl font-semibold mb-4">Existing Fleet</h2>
+            <div class="grid grid-cols-2 gap-4 mb-6">
+              <img
+                src="../assets/images/projects/Shark/robot_1.jpeg"
+                alt="Shark Robotics fleet robot 1"
+                class="w-full rounded-lg object-cover"
+              />
+              <img
+                src="../assets/images/projects/Shark/robot_2.png"
+                alt="Shark Robotics fleet robot 2"
+                class="w-full rounded-lg object-cover"
+              />
+            </div>
+            <ul class="space-y-3 list-none">
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  <strong>1) Hardware Selection.</strong> I researched cameras and sensors for the existing robots, contacted suppliers, tested the hardware options, and selected what worked best for each robot.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  <strong>2) Low-Latency Camera Streaming.</strong> I wrote C++ code on Ubuntu to stream live camera feeds from the robots to a remote control station over <strong>RTSP</strong>. The goal was the lowest possible latency since operators need real-time vision to make decisions. I also had to balance that against memory and bandwidth limits, as it all runs on embedded hardware out in the field.
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <div class="max-w-4xl mx-auto flex flex-col items-center justify-center gap-2 text-center pb-10">
+      <p class="text-sm">© 2026 Chris KY - Built with Passion</p>
+    </div>
+
+    <!-- JS -->
+    <script src="../assets/js/script.js"></script>
+  </body>
+</html>

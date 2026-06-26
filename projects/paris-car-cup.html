@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme === "dark") document.documentElement.classList.add("dark");
+    })();
+  </script>
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Paris Autonomous Car Cup 2022 | ROS 2, Gazebo, RViz, Turtlebot3 Burger"
+    />
+    <meta name="author" content="Chris KAMAL YOUSSEF" />
+    <title>Paris Autonomous Car Cup</title>
+
+    <link rel="icon" type="image/x-icon" href="../assets/images/chris_ky_logo.png" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+  </head>
+
+  <body class="bg-[#fef8ec] dark:bg-[#2c2621] text-brown-800 dark:text-[#e8dccf]">
+    <!-- Loader -->
+    <div
+      id="loader"
+      class="fixed inset-0 z-50 flex items-center justify-center bg-[#fdf6ec] dark:bg-[#2a1f1a] transition-opacity duration-500"
+    >
+      <div class="loader-inner">
+        <div class="loader-ring"></div>
+        <div class="loader-icon">✦</div>
+      </div>
+    </div>
+
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50 bg-[#fef8ec] dark:bg-[#2c2621] shadow-md">
+      <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        <a href="../index.html#about" class="text-2xl font-bold">Chris KY</a>
+
+        <div class="hidden md:flex items-center gap-6 font-medium">
+          <nav class="flex space-x-6">
+            <a href="../index.html" class="nav-link">Home</a>
+            <a href="../index.html#portfolio" class="nav-link">Projects</a>
+            <a href="../contact.html" class="nav-link">Contact</a>
+          </nav>
+          <button id="toggleTheme" class="theme-toggle p-2 rounded-full ml-2">🌓</button>
+        </div>
+
+        <div class="md:hidden flex items-center gap-3">
+          <button id="nav-toggle" class="focus:outline-none">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2"
+              viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+          <button id="toggleThemeMobile" class="theme-toggle p-2 rounded-full order-2">🌓</button>
+        </div>
+      </div>
+
+      <div id="mobile-menu" class="md:hidden hidden flex flex-col items-start space-y-3 pb-6 px-6 font-medium">
+        <a href="../index.html" class="nav-link">Home</a>
+        <a href="../index.html#portfolio" class="nav-link">Projects</a>
+        <a href="../contact.html" class="nav-link">Contact</a>
+      </div>
+    </header>
+
+    <section class="px-6 py-12 max-w-5xl mx-auto">
+      <!-- Title -->
+      <h1 class="text-4xl md:text-5xl font-bold text-center mb-3">
+        Paris Autonomous Car Cup
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="text-center text-lg opacity-90 mb-8">
+        2022 &middot; ROS 2 &middot; Gazebo &middot; Turtlebot3 Burger
+      </p>
+
+      <!-- Tags -->
+      <div class="mb-8 flex flex-wrap gap-2 justify-center">
+        <span class="tag-label">ROS 2</span>
+        <span class="tag-label">Python</span>
+        <span class="tag-label">Gazebo</span>
+        <span class="tag-label">RViz</span>
+        <span class="tag-label">Turtlebot3</span>
+        <span class="tag-label">LIDAR</span>
+        <span class="tag-label">Autonomous Navigation</span>
+      </div>
+
+      <!-- Timeline Sections -->
+      <div class="space-y-16">
+
+        <!-- Overview -->
+        <div class="timeline-section">
+          <div class="timeline-line"><div class="timeline-pad"></div></div>
+          <div class="timeline-content">
+            <h2 class="text-2xl font-semibold mb-4">Overview</h2>
+            <ul class="space-y-3 list-none">
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  A student robotics competition held in Paris in 2022. The goal was simple on paper: get a robot to follow a track and deal with whatever obstacles got thrown in its way.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  We started by building and testing everything in simulation, then ported it all to a real <strong>Turtlebot3 Burger</strong> for the actual run.
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Obstacles -->
+        <div class="timeline-section">
+          <div class="timeline-line"><div class="timeline-pad"></div></div>
+          <div class="timeline-content">
+            <h2 class="text-2xl font-semibold mb-4">The Obstacles</h2>
+            <ul class="space-y-3 list-none">
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  The track had two visible lines the robot had to stay between. Drifting outside them meant losing points.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  Tall columns were placed directly on the road. The robot had to detect them with LIDAR and navigate around without leaving the lane.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  One of the harder sections was a completely dark room. No light, camera useless. The robot had to rely entirely on LIDAR to find the exit and keep moving.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  Random blocks scattered in the middle of the track, placed at unpredictable positions to force real-time replanning.
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Simulation -->
+        <div class="timeline-section">
+          <div class="timeline-line"><div class="timeline-pad"></div></div>
+          <div class="timeline-content">
+            <h2 class="text-2xl font-semibold mb-4">1) Simulation with Gazebo and RViz</h2>
+            <ul class="space-y-3 list-none mb-6">
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  Set up the full navigation stack in <strong>ROS 2</strong> and ran it in <strong>Gazebo</strong> using the exact same robot model and sensor setup as the physical one. Easier to break things there than in real life.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  Used <strong>RViz</strong> to see what the robot was actually perceiving: sensor data, the planned path, where it thought obstacles were. Very useful for debugging.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  The robot relied on both a <strong>camera</strong> for lane detection and a <strong>LIDAR</strong> for obstacle avoidance. Having both mattered especially for the dark room challenge.
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Real Robot -->
+        <div class="timeline-section">
+          <div class="timeline-line"><div class="timeline-pad"></div></div>
+          <div class="timeline-content">
+            <h2 class="text-2xl font-semibold mb-4">2) Deploying on the Real Turtlebot3</h2>
+            <ul class="space-y-3 list-none mb-6">
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  Once simulation looked solid, we moved to the physical <strong>Turtlebot3 Burger</strong>. The gap between sim and real is always where things get interesting.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  The same ROS 2 stack ran on the real robot without major changes. It handled the track, the obstacles, and the dark room on the actual competition day.
+                </span>
+              </li>
+            </ul>
+
+            <div class="flex justify-center">
+              <div class="max-w-lg w-full">
+                <img
+                  src="../assets/images/projects/ParisROS/real_one.jpeg"
+                  alt="Turtlebot3 Burger on the competition track"
+                  class="rounded-lg shadow-lg w-full"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- What I Did -->
+        <div class="timeline-section">
+          <div class="timeline-line"><div class="timeline-pad"></div></div>
+          <div class="timeline-content">
+            <h2 class="text-2xl font-semibold mb-4">What I Did</h2>
+            <ul class="space-y-3 list-none">
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>Wrote the autonomous navigation stack in ROS 2 with Python, from lane following to obstacle avoidance.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>Set up the Gazebo simulation and used RViz to debug sensor feedback and planned paths.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>Combined camera and LIDAR data to handle both lit and dark environments.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>Ported and tested the full system on the real Turtlebot3 Burger for competition day.</span>
+              </li>
+            </ul>
+
+            <div class="mt-6">
+              <p class="font-semibold mb-2">Tech Stack</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="tag-label">ROS 2</span>
+                <span class="tag-label">Python</span>
+                <span class="tag-label">Gazebo</span>
+                <span class="tag-label">RViz</span>
+                <span class="tag-label">Turtlebot3 Burger</span>
+                <span class="tag-label">LIDAR</span>
+                <span class="tag-label">Camera</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <div class="max-w-4xl mx-auto flex flex-col items-center justify-center gap-2 text-center pb-10">
+      <p class="text-sm">© 2026 Chris KY - Built with Passion</p>
+    </div>
+
+    <script src="../assets/js/script.js"></script>
+  </body>
+</html>

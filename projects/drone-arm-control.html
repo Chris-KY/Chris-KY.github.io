@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme === "dark") document.documentElement.classList.add("dark");
+    })();
+  </script>
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Personal project: controlling a drone with arm movements using an Arduino Nano 33 BLE Sense IMU wristband and Raspberry Pi 5"
+    />
+    <meta name="author" content="Chris KAMAL YOUSSEF" />
+    <title>Drone Arm Control</title>
+
+    <link rel="icon" type="image/x-icon" href="../assets/images/chris_ky_logo.png" />
+
+    <!-- Tailwind CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+  </head>
+
+  <body class="bg-[#fef8ec] dark:bg-[#2c2621] text-brown-800 dark:text-[#e8dccf]">
+    <!-- Loader -->
+    <div
+      id="loader"
+      class="fixed inset-0 z-50 flex items-center justify-center bg-[#fdf6ec] dark:bg-[#2a1f1a] transition-opacity duration-500"
+    >
+      <div class="loader-inner">
+        <div class="loader-ring"></div>
+        <div class="loader-icon">✦</div>
+      </div>
+    </div>
+
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50 bg-[#fef8ec] dark:bg-[#2c2621] shadow-md">
+      <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        <a href="../index.html#about" class="text-2xl font-bold">Chris KY</a>
+
+        <div class="hidden md:flex items-center gap-6 font-medium">
+          <nav class="flex space-x-6">
+            <a href="../index.html" class="nav-link">Home</a>
+            <a href="../index.html#portfolio" class="nav-link">Projects</a>
+            <a href="../contact.html" class="nav-link">Contact</a>
+          </nav>
+          <button id="toggleTheme" class="theme-toggle p-2 rounded-full ml-2">🌓</button>
+        </div>
+
+        <div class="md:hidden flex items-center gap-3">
+          <button id="nav-toggle" class="focus:outline-none">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2"
+              viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+          <button id="toggleThemeMobile" class="theme-toggle p-2 rounded-full order-2">🌓</button>
+        </div>
+      </div>
+
+      <div id="mobile-menu" class="md:hidden hidden flex flex-col items-start space-y-3 pb-6 px-6 font-medium">
+        <a href="../index.html" class="nav-link">Home</a>
+        <a href="../index.html#portfolio" class="nav-link">Projects</a>
+        <a href="../contact.html" class="nav-link">Contact</a>
+      </div>
+    </header>
+
+    <section class="px-6 py-12 max-w-5xl mx-auto">
+      <!-- Title -->
+      <h1 class="text-4xl md:text-5xl font-bold text-center mb-3">
+        Drone Arm Control
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="text-center text-lg opacity-90 mb-8">
+        Personal Project &middot; Arduino Nano 33 BLE Sense + Raspberry Pi 5 + MAVLink
+      </p>
+
+      <!-- Tags -->
+      <div class="mb-8 flex flex-wrap gap-2 justify-center">
+        <span class="tag-label">Python</span>
+        <span class="tag-label">MAVLink</span>
+        <span class="tag-label">ArduPilot</span>
+        <span class="tag-label">Raspberry Pi 5</span>
+        <span class="tag-label">Arduino Nano 33 BLE</span>
+        <span class="tag-label">Drones</span>
+        <span class="tag-label">Embedded</span>
+        <span class="tag-label">Bluetooth</span>
+      </div>
+
+      <!-- Timeline Sections -->
+      <div class="space-y-16">
+
+        <!-- Overview -->
+        <div class="timeline-section">
+          <div class="timeline-line"><div class="timeline-pad"></div></div>
+          <div class="timeline-content">
+            <h2 class="text-2xl font-semibold mb-4">Overview</h2>
+            <ul class="space-y-3 list-none">
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  Personal project: control a drone using arm gestures, with no joystick or traditional controller.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  An <strong>Arduino Nano 33 BLE Sense</strong> strapped to the forearm reads arm orientation via its built-in IMU, sends commands via Bluetooth LE to a <strong>Raspberry Pi 5</strong> mounted on the drone, which then controls the flight via <strong>MAVLink / ArduPilot</strong>.
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Hardware -->
+        <div class="timeline-section">
+          <div class="timeline-line"><div class="timeline-pad"></div></div>
+          <div class="timeline-content">
+            <h2 class="text-2xl font-semibold mb-4">1) Hardware Setup</h2>
+            <ul class="space-y-3 list-none">
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  <strong>Arduino Nano 33 BLE Sense</strong>: strapped to the forearm as a DIY wristband. Contains a built-in 9-axis IMU (LSM9DS1) for reading arm orientation. Connects to the Pi via Bluetooth LE.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  <strong>Raspberry Pi 5</strong> mounted on the drone: receives the Bluetooth data from the armband and runs the flight control script.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  Drone running <strong>ArduPilot</strong> flight stack, connected to the Pi via MAVLink.
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- How It Works -->
+        <div class="timeline-section">
+          <div class="timeline-line"><div class="timeline-pad"></div></div>
+          <div class="timeline-content">
+            <h2 class="text-2xl font-semibold mb-4">2) How It Works</h2>
+            <ul class="space-y-3 list-none">
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  The Arduino Nano 33 BLE Sense streams arm orientation data (tilt up / tilt down) over Bluetooth LE.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  The Raspberry Pi 5 receives this data and maps it to flight commands: arm up makes the drone go up, arm down makes it go down, and so on.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  When a valid arm orientation is detected (arm raised → go up, arm lowered → go down), the Pi runs a Python script that sends the corresponding <strong>MAVLink command</strong> to the ArduPilot flight controller.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  Used the <strong>DroneKit</strong> Python library (built on MAVLink) to send commands cleanly without low-level MAVLink message construction.
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Demo -->
+        <div class="timeline-section">
+          <div class="timeline-line"><div class="timeline-pad"></div></div>
+          <div class="timeline-content">
+            <h2 class="text-2xl font-semibold mb-4">3) Demo</h2>
+            <p class="mb-4">Drone going up and down controlled by arm movement.</p>
+
+            <div class="flex justify-center">
+              <video
+                controls
+                class="rounded-2xl shadow-lg max-w-sm w-full"
+                preload="metadata"
+              >
+                <source src="../assets/images/projects/DroneArm/drone.mp4" type="video/mp4" />
+              </video>
+            </div>
+          </div>
+        </div>
+
+        <!-- Future Work -->
+        <div class="timeline-section">
+          <div class="timeline-line"><div class="timeline-pad"></div></div>
+          <div class="timeline-content">
+            <h2 class="text-2xl font-semibold mb-4">4) Future Work</h2>
+            <ul class="space-y-3 list-none">
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  Replace the IMU wristband with an <strong>EMG armband</strong> (e.g. <strong>OYMotion gForce Pro Band</strong>) that reads the electrical activity of wrist muscles to recognize distinct hand gestures.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  This would allow mapping specific gestures — fist, open hand, wrist rotation — to different flight commands (throttle, yaw, pitch), enabling much finer and more intuitive control beyond simple up/down.
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <div class="max-w-4xl mx-auto flex flex-col items-center justify-center gap-2 text-center pb-10">
+      <p class="text-sm">© 2026 Chris KY - Built with Passion</p>
+    </div>
+
+    <!-- JS -->
+    <script src="../assets/js/script.js"></script>
+  </body>
+</html>

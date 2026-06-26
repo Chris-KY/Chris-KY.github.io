@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme === "dark") document.documentElement.classList.add("dark");
+    })();
+  </script>
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Building the Future While Exploring the Present — Chris KY Blog" />
+    <meta name="author" content="Chris KAMAL YOUSSEF" />
+    <title>Building the Future While Exploring the Present — Chris KY</title>
+
+    <link rel="icon" type="image/x-icon" href="../../../assets/images/chris_ky_logo.png" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../../assets/css/styles.css" />
+  </head>
+
+  <body class="bg-[#fef8ec] dark:bg-[#2c2621] text-brown-800 dark:text-[#e8dccf]">
+    <!-- Loader -->
+    <div
+      id="loader"
+      class="fixed inset-0 z-50 flex items-center justify-center bg-[#fdf6ec] dark:bg-[#2a1f1a] transition-opacity duration-500"
+    >
+      <div class="loader-inner">
+        <div class="loader-ring"></div>
+        <div class="loader-icon">✦</div>
+      </div>
+    </div>
+
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50 bg-[#fef8ec] dark:bg-[#2c2621] shadow-md">
+      <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        <a href="../../../index.html" class="text-2xl font-bold">Chris KY</a>
+
+        <div class="hidden md:flex items-center gap-6 font-medium">
+          <nav class="flex space-x-6">
+            <a href="../../../index.html" class="nav-link">← Portfolio</a>
+            <a href="../../index.html" class="nav-link">Blog Home</a>
+          </nav>
+          <button id="toggleTheme" class="theme-toggle p-2 rounded-full ml-2">🌓</button>
+        </div>
+
+        <div class="md:hidden flex items-center gap-3">
+          <button id="nav-toggle" class="focus:outline-none">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2"
+              viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+          <button id="toggleThemeMobile" class="theme-toggle p-2 rounded-full order-2">🌓</button>
+        </div>
+      </div>
+
+      <div id="mobile-menu" class="md:hidden hidden flex flex-col items-start space-y-3 pb-6 px-6 font-medium">
+        <a href="../../../index.html" class="nav-link">← Portfolio</a>
+        <a href="../../index.html" class="nav-link">Blog Home</a>
+      </div>
+    </header>
+
+    <article class="px-6 py-12 max-w-2xl mx-auto">
+      <p class="text-xs uppercase tracking-widest opacity-50 mb-4">May 2026</p>
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Building the Future While Exploring the Present</h1>
+      <p class="text-lg opacity-60 mb-10">A personal look at curiosity, learning, travel, sport, and the mindset that shapes how I work and live.</p>
+
+      <div class="space-y-5 leading-relaxed text-lg opacity-90">
+        <p>If I had to describe myself with one word, I would choose curiosity.</p>
+
+        <p>I like to understand how things work. I like to learn new topics, ask questions, test ideas, and explore. This is one of the reasons why I enjoy being an engineer. In engineering, there is always something new to learn. A new tool, a new method, a new problem, a new system, or a new way to think.</p>
+
+        <p>This is also why I like working in computer vision, AI, robotics, and intelligent systems. These fields are always moving. You cannot stay still. You have to keep learning, improving, and adapting. For me, that is not a problem. That is the fun part.</p>
+
+        <p>I also try to keep this same mindset in my personal life.</p>
+
+        <p>I love to travel and discover new places. Until now, I have visited almost 30 countries. For me, travel is not only about seeing beautiful places. It is also about discovering new cultures, new ways of thinking, and new ways of living. Every country teaches you something different.</p>
+
+        <p>I also like activities that challenge the mind and the body. I play chess and have a rating around 1300 on Chess.com. I play rugby, not professionally, but with real enjoyment. I also played field hockey before at a professional level.</p>
+
+        <p>All these things are different, but they have something in common. They all require learning, discipline, adaptation, and curiosity.</p>
+
+        <p>This is how I like to live and work. I do not want to only follow a fixed path. I want to explore, build, learn, and create. Sometimes the future is not fully clear, but that is also what makes it interesting.</p>
+
+        <p>For me, building the future starts by exploring the present.</p>
+      </div>
+    </article>
+
+    <!-- Footer -->
+    <div class="max-w-2xl mx-auto flex flex-col items-center justify-center gap-2 text-center pb-10">
+      <a href="../../index.html" class="text-sm opacity-50 hover:opacity-100 transition-opacity">← Back to Blog</a>
+    </div>
+
+    <script src="../../../assets/js/script.js"></script>
+  </body>
+</html>

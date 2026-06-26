@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme === "dark") document.documentElement.classList.add("dark");
+    })();
+  </script>
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Smart Factory 4.0 at ALTEN Labs - Auto-labeling pipeline with Optical Flow + Kalman Filter for YOLO training, and SLAM on ROS 2 for autonomous factory robots"
+    />
+    <meta name="author" content="Chris KAMAL YOUSSEF" />
+    <title>ALTEN Labs — Smart Factory 4.0</title>
+
+    <link rel="icon" type="image/x-icon" href="../assets/images/chris_ky_logo.png" />
+
+    <!-- Tailwind CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+  </head>
+
+  <body class="bg-[#fef8ec] dark:bg-[#2c2621] text-brown-800 dark:text-[#e8dccf]">
+    <!-- Loader -->
+    <div
+      id="loader"
+      class="fixed inset-0 z-50 flex items-center justify-center bg-[#fdf6ec] dark:bg-[#2a1f1a] transition-opacity duration-500"
+    >
+      <div class="loader-inner">
+        <div class="loader-ring"></div>
+        <div class="loader-icon">✦</div>
+      </div>
+    </div>
+
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50 bg-[#fef8ec] dark:bg-[#2c2621] shadow-md">
+      <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        <a href="../index.html#about" class="text-2xl font-bold">Chris KY</a>
+
+        <div class="hidden md:flex items-center gap-6 font-medium">
+          <nav class="flex space-x-6">
+            <a href="../index.html" class="nav-link">Home</a>
+            <a href="../index.html#portfolio" class="nav-link">Projects</a>
+            <a href="../contact.html" class="nav-link">Contact</a>
+          </nav>
+          <button id="toggleTheme" class="theme-toggle p-2 rounded-full ml-2">🌓</button>
+        </div>
+
+        <div class="md:hidden flex items-center gap-3">
+          <button id="nav-toggle" class="focus:outline-none">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2"
+              viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+          <button id="toggleThemeMobile" class="theme-toggle p-2 rounded-full order-2">🌓</button>
+        </div>
+      </div>
+
+      <div id="mobile-menu" class="md:hidden hidden flex flex-col items-start space-y-3 pb-6 px-6 font-medium">
+        <a href="../index.html" class="nav-link">Home</a>
+        <a href="../index.html#portfolio" class="nav-link">Projects</a>
+        <a href="../contact.html" class="nav-link">Contact</a>
+      </div>
+    </header>
+
+    <section class="px-6 py-12 max-w-5xl mx-auto">
+      <!-- Title -->
+      <h1 class="text-4xl md:text-5xl font-bold text-center mb-3">
+        Smart Factory 4.0 at ALTEN Labs
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="text-center text-lg opacity-90 mb-8">
+        2024 &middot; R&amp;D Engineer &middot; ALTEN Labs
+      </p>
+
+      <!-- Tags -->
+      <div class="mb-8 flex flex-wrap gap-2 justify-center">
+        <span class="tag-label">Python</span>
+        <span class="tag-label">Computer Vision</span>
+        <span class="tag-label">Optical Flow</span>
+        <span class="tag-label">Kalman Filter</span>
+        <span class="tag-label">YOLO Segmentation</span>
+        <span class="tag-label">ROS 2</span>
+        <span class="tag-label">SLAM</span>
+        <span class="tag-label">Robotics</span>
+      </div>
+
+      <!-- Timeline Sections -->
+      <div class="space-y-16">
+
+        <!-- Overview -->
+        <div class="timeline-section">
+          <div class="timeline-line"><div class="timeline-pad"></div></div>
+          <div class="timeline-content">
+            <h2 class="text-2xl font-semibold mb-4">Overview</h2>
+            <ul class="space-y-3 list-none">
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  R&amp;D project at ALTEN Labs focused on automating a manufacturing factory: teaching robot arms to detect, segment, and grab specific parts off a production line, and enabling robots to navigate autonomously through the factory floor.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  Two main challenges: generating labeled training data for a YOLO segmentation model without manual annotation, and giving robots a map and self-localization capability via SLAM on ROS 2.
+                </span>
+              </li>
+            </ul>
+
+            <div class="mt-6 flex justify-center">
+              <img
+                src="../assets/images/projects/ALTEN/Alten_labs.jpeg"
+                alt="ALTEN Labs facility"
+                class="rounded-2xl shadow-lg max-w-xl w-full object-cover"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- The Problem -->
+        <div class="timeline-section">
+          <div class="timeline-line"><div class="timeline-pad"></div></div>
+          <div class="timeline-content">
+            <h2 class="text-2xl font-semibold mb-4">1) The Problem: Labeling Takes Too Long</h2>
+            <ul class="space-y-3 list-none">
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  To train a YOLO segmentation model, you need images with pixel-accurate masks drawn around each object. For factory parts, that means going through hundreds of photos and manually outlining each part, one by one.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  That process is slow, tedious, and scales badly. We needed a way to generate labeled training data automatically, without anyone picking up a labeling tool.
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- The Insight -->
+        <div class="timeline-section">
+          <div class="timeline-line"><div class="timeline-pad"></div></div>
+          <div class="timeline-content">
+            <h2 class="text-2xl font-semibold mb-4">2) The Insight: Optical Flow Segments Moving Objects for Free</h2>
+            <ul class="space-y-3 list-none">
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  From my previous internship at INERIS, I had worked extensively with optical flow to measure smoke speed in fire footage. One observation stuck with me: optical flow naturally highlights moving objects by computing pixel-level motion vectors across frames.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  If an object moves and the background stays still, the flow vectors cluster on the object and are near-zero everywhere else. That is a free segmentation mask, with no annotation required.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  The question became: could this work for factory parts?
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- The Solution -->
+        <div class="timeline-section">
+          <div class="timeline-line"><div class="timeline-pad"></div></div>
+          <div class="timeline-content">
+            <h2 class="text-2xl font-semibold mb-4">3) The Solution: Auto-Labeling with RAFT + Kalman Filter</h2>
+            <ul class="space-y-3 list-none">
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  Instead of photographing parts in a cluttered factory scene, we placed each part on a plain background and moved it slowly in front of a fixed camera to record short video clips.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  I applied RAFT optical flow to each clip. The flow vectors activate strongly on the moving part and stay near zero on the static background, giving a rough motion mask per frame.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  I added a <strong>Kalman filter</strong> on top to smooth the mask over time, correcting jitter and filling in frames where the optical flow was noisy. The result was stable, clean segmentation masks across the whole clip.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  Output: a dataset of images with pixel-accurate segmentation masks, generated automatically with zero manual labeling. I used this to train a YOLO segmentation model.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  <strong>It worked.</strong> The trained model correctly detected and segmented the factory parts, enabling the robot arm to locate and grip them reliably.
+                </span>
+              </li>
+            </ul>
+
+            <div class="mt-6 flex justify-center">
+              <img
+                src="../assets/images/projects/ALTEN/raft.png"
+                alt="RAFT optical flow generating segmentation masks"
+                class="rounded-2xl shadow-lg max-w-xl w-full object-cover"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- SLAM on ROS 2 -->
+        <div class="timeline-section">
+          <div class="timeline-line"><div class="timeline-pad"></div></div>
+          <div class="timeline-content">
+            <h2 class="text-2xl font-semibold mb-4">4) SLAM on ROS 2: Autonomous Navigation</h2>
+            <ul class="space-y-3 list-none">
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  The second challenge was giving factory robots the ability to navigate on their own, without pre-programmed paths or fixed infrastructure.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  I worked on <strong>SLAM (Simultaneous Localization and Mapping)</strong> using <strong>ROS 2</strong>: the robot builds a map of its environment in real time while tracking its own position within that map.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  I ran simulations with several mobile robots operating in a shared environment, tested multiple SLAM algorithms, and tuned parameters to get better localization accuracy and map quality.
+                </span>
+              </li>
+            </ul>
+
+            <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+              <img
+                src="../assets/images/projects/ALTEN/ROS.jpeg"
+                alt="ROS 2 simulation environment"
+                class="rounded-2xl shadow-lg w-full object-cover"
+              />
+              <img
+                src="../assets/images/projects/ALTEN/SLAM.png"
+                alt="SLAM map built by autonomous robot"
+                class="rounded-2xl shadow-lg w-full object-cover"
+              />
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <div class="max-w-4xl mx-auto flex flex-col items-center justify-center gap-2 text-center pb-10">
+      <p class="text-sm">© 2026 Chris KY - Built with Passion</p>
+    </div>
+
+    <!-- JS -->
+    <script src="../assets/js/script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme === "dark") document.documentElement.classList.add("dark");
+    })();
+  </script>
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A Few Days at UnitedXR Europe — Chris KY Blog" />
+    <meta name="author" content="Chris KAMAL YOUSSEF" />
+    <title>A Few Days at UnitedXR Europe — Chris KY</title>
+
+    <link rel="icon" type="image/x-icon" href="../../../assets/images/chris_ky_logo.png" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../../assets/css/styles.css" />
+  </head>
+
+  <body class="bg-[#fef8ec] dark:bg-[#2c2621] text-brown-800 dark:text-[#e8dccf]">
+    <!-- Loader -->
+    <div
+      id="loader"
+      class="fixed inset-0 z-50 flex items-center justify-center bg-[#fdf6ec] dark:bg-[#2a1f1a] transition-opacity duration-500"
+    >
+      <div class="loader-inner">
+        <div class="loader-ring"></div>
+        <div class="loader-icon">✦</div>
+      </div>
+    </div>
+
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50 bg-[#fef8ec] dark:bg-[#2c2621] shadow-md">
+      <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        <a href="../../../index.html" class="text-2xl font-bold">Chris KY</a>
+
+        <div class="hidden md:flex items-center gap-6 font-medium">
+          <nav class="flex space-x-6">
+            <a href="../../../index.html" class="nav-link">← Portfolio</a>
+            <a href="../../index.html" class="nav-link">Blog Home</a>
+          </nav>
+          <button id="toggleTheme" class="theme-toggle p-2 rounded-full ml-2">🌓</button>
+        </div>
+
+        <div class="md:hidden flex items-center gap-3">
+          <button id="nav-toggle" class="focus:outline-none">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2"
+              viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+          <button id="toggleThemeMobile" class="theme-toggle p-2 rounded-full order-2">🌓</button>
+        </div>
+      </div>
+
+      <div id="mobile-menu" class="md:hidden hidden flex flex-col items-start space-y-3 pb-6 px-6 font-medium">
+        <a href="../../../index.html" class="nav-link">← Portfolio</a>
+        <a href="../../index.html" class="nav-link">Blog Home</a>
+      </div>
+    </header>
+
+    <article class="px-6 py-12 max-w-2xl mx-auto">
+      <p class="text-xs uppercase tracking-widest opacity-50 mb-4">August 2024</p>
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">A Few Days at UnitedXR Europe</h1>
+      <p class="text-lg opacity-60 mb-10">I went to Brussels for UnitedXR Europe. Three days of talks and discussions about where XR is going.</p>
+
+      <div class="space-y-5 leading-relaxed text-lg opacity-90">
+        <p>UnitedXR Europe is a three-day event in Brussels focused on XR, the metaverse, and everything that comes with it. I went there to listen, discover, and see what people in this space are actually thinking about right now.</p>
+
+        <p>One of the sessions that stayed with me was "Defining You: Digital Identity in the Metaverse" by Marine Boulot. The question she was exploring is simple but not easy to answer: who are you in a virtual space? In real life, identity is built through your face, your body, the way you move and react. When you are an avatar, all of that changes. How do you express emotions? How do you build trust with someone you have never really seen?</p>
+
+        <p>The second session I want to mention is "Choose-Your-Own-Reality: Ethics, Identity and XR + AI." This one was a panel with Alina Kadlubsky, Rob Morgan, Linda Ricci Jacobs, and Anastasia Sergeeva. They talked about a scenario that feels close: what happens when someone else can modify how you appear in XR? Who controls your image? One line from the discussion hit me: "if they apply a filter in XR, is it really different from the mental image they already have?" That question stuck with me after the event.</p>
+
+        <p>I work in computer vision and XR, so these topics are not abstract for me. But hearing them discussed from a social, ethical, and human angle was a good reminder that the technology is only one part of the equation. The harder questions are about people.</p>
+
+        <p>If you are curious, I also wrote a short post about it on LinkedIn.</p>
+
+        <p>
+          <a
+            href="https://www.linkedin.com/posts/chris-ky_unitedxr-metaverse-horizonworld-activity-7403928626414448640-fDRc"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="underline opacity-70 hover:opacity-100 transition-opacity"
+          >See the LinkedIn post</a>
+        </p>
+      </div>
+    </article>
+
+    <!-- Footer -->
+    <div class="max-w-2xl mx-auto flex flex-col items-center justify-center gap-2 text-center pb-10">
+      <a href="../../index.html" class="text-sm opacity-50 hover:opacity-100 transition-opacity">← Back to Blog</a>
+    </div>
+
+    <script src="../../../assets/js/script.js"></script>
+  </body>
+</html>

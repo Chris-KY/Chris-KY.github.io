@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme === "dark") document.documentElement.classList.add("dark");
+    })();
+  </script>
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Coupe de France de Robotique — STM32 in C, color detection, motors, and robot decision logic"
+    />
+    <meta name="author" content="Chris KAMAL YOUSSEF" />
+    <title>Coupe de France de Robotique</title>
+
+    <link rel="icon" type="image/x-icon" href="../assets/images/chris_ky_logo.png" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+  </head>
+
+  <body class="bg-[#fef8ec] dark:bg-[#2c2621] text-brown-800 dark:text-[#e8dccf]">
+    <!-- Loader -->
+    <div
+      id="loader"
+      class="fixed inset-0 z-50 flex items-center justify-center bg-[#fdf6ec] dark:bg-[#2a1f1a] transition-opacity duration-500"
+    >
+      <div class="loader-inner">
+        <div class="loader-ring"></div>
+        <div class="loader-icon">✦</div>
+      </div>
+    </div>
+
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50 bg-[#fef8ec] dark:bg-[#2c2621] shadow-md">
+      <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        <a href="../index.html#about" class="text-2xl font-bold">Chris KY</a>
+
+        <div class="hidden md:flex items-center gap-6 font-medium">
+          <nav class="flex space-x-6">
+            <a href="../index.html" class="nav-link">Home</a>
+            <a href="../index.html#portfolio" class="nav-link">Projects</a>
+            <a href="../contact.html" class="nav-link">Contact</a>
+          </nav>
+          <button id="toggleTheme" class="theme-toggle p-2 rounded-full ml-2">🌓</button>
+        </div>
+
+        <div class="md:hidden flex items-center gap-3">
+          <button id="nav-toggle" class="focus:outline-none">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2"
+              viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+          <button id="toggleThemeMobile" class="theme-toggle p-2 rounded-full order-2">🌓</button>
+        </div>
+      </div>
+
+      <div id="mobile-menu" class="md:hidden hidden flex flex-col items-start space-y-3 pb-6 px-6 font-medium">
+        <a href="../index.html" class="nav-link">Home</a>
+        <a href="../index.html#portfolio" class="nav-link">Projects</a>
+        <a href="../contact.html" class="nav-link">Contact</a>
+      </div>
+    </header>
+
+    <section class="px-6 py-12 max-w-5xl mx-auto">
+      <!-- Title -->
+      <h1 class="text-4xl md:text-5xl font-bold text-center mb-3">
+        Coupe de France de Robotique
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="text-center text-lg opacity-90 mb-8">
+        Bachelor Project &middot; National Robotics Competition &middot; STM32 &middot; C
+      </p>
+
+      <!-- Tags -->
+      <div class="mb-8 flex flex-wrap gap-2 justify-center">
+        <span class="tag-label">C</span>
+        <span class="tag-label">STM32</span>
+        <span class="tag-label">Embedded</span>
+        <span class="tag-label">Color Detection</span>
+        <span class="tag-label">Motors</span>
+        <span class="tag-label">Robotics</span>
+        <span class="tag-label">K-Means</span>
+      </div>
+
+      <!-- Timeline Sections -->
+      <div class="space-y-16">
+
+        <!-- Overview -->
+        <div class="timeline-section">
+          <div class="timeline-line"><div class="timeline-pad"></div></div>
+          <div class="timeline-content">
+            <h2 class="text-2xl font-semibold mb-4">Overview</h2>
+            <ul class="space-y-3 list-none">
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  Team project for the Coupe de France de Robotique, a national student robotics competition. Ran over 2 years. The robot had to detect cups on a table, identify their color, pick them up, place each one in the correct destination, and avoid hitting the opponent robot during the match.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  All code was written in C on an STM32 at the lowest level possible. No libraries, no AI, no high-level abstractions. We read the hardware documentation to know what signals to send to each component to make it work.
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Color Detection -->
+        <div class="timeline-section">
+          <div class="timeline-line"><div class="timeline-pad"></div></div>
+          <div class="timeline-content">
+            <h2 class="text-2xl font-semibold mb-4">1) Color Detection — The Hard Part</h2>
+            <ul class="space-y-3 list-none">
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  The robot needed to tell Red cups from Green cups using a low-level color sensor, with no camera and no AI.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  The core problem: the sensor output depends on both the cup color and the conditions (distance to the cup, ambient lighting). A fixed threshold for "red" or "green" does not work reliably across all situations.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  Tested several approaches. The solution that worked: scan all cups visible from the current position, collect all the color readings together, then run a simple <strong>K-means clustering</strong> (k=2) to split the readings into two groups. One group is Red, the other is Green. No fixed reference value is needed for either color.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  This approach is robust because it works by comparing the readings to each other, not to a hardcoded constant. As long as both colors are present, the algorithm separates them correctly regardless of distance or lighting.
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Motors and Control -->
+        <div class="timeline-section">
+          <div class="timeline-line"><div class="timeline-pad"></div></div>
+          <div class="timeline-content">
+            <h2 class="text-2xl font-semibold mb-4">2) Motors and Control System</h2>
+            <ul class="space-y-3 list-none">
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  Programmed the motor control directly on the STM32: PWM generation, speed control, direction, and stopping conditions.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  Also handled the gripper mechanism for picking up and releasing the cups.
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Decision Logic -->
+        <div class="timeline-section">
+          <div class="timeline-line"><div class="timeline-pad"></div></div>
+          <div class="timeline-content">
+            <h2 class="text-2xl font-semibold mb-4">3) Robot Decision Logic</h2>
+            <ul class="space-y-3 list-none">
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  Wrote the state machine that governs what the robot does at each step: scan, identify color, move to the cup, grab it, navigate to the target zone, release.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  The logic is entirely rule-based. Each state has a clear condition to enter and a clear action to execute, with no learning or probabilistic reasoning.
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Demo -->
+        <div class="timeline-section">
+          <div class="timeline-line"><div class="timeline-pad"></div></div>
+          <div class="timeline-content">
+            <h2 class="text-2xl font-semibold mb-6">4) Demo</h2>
+            <div class="flex justify-center">
+              <video controls class="rounded-xl shadow-lg max-w-lg w-full" preload="metadata">
+                <source src="../assets/images/projects/CoupeRobotique/Demo.mp4" type="video/mp4" />
+              </video>
+            </div>
+          </div>
+        </div>
+
+        <!-- What I Did -->
+        <div class="timeline-section">
+          <div class="timeline-line"><div class="timeline-pad"></div></div>
+          <div class="timeline-content">
+            <h2 class="text-2xl font-semibold mb-4">My Contribution</h2>
+            <ul class="space-y-3 list-none">
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>Designed and implemented the color detection system, including testing multiple approaches and arriving at the relative K-means comparison method.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>Programmed the motor control and gripper system in C on STM32.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>Wrote the full robot decision state machine.</span>
+              </li>
+            </ul>
+
+            <div class="mt-6">
+              <p class="font-semibold mb-2">Tech Stack</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="tag-label">C</span>
+                <span class="tag-label">STM32</span>
+                <span class="tag-label">PWM</span>
+                <span class="tag-label">Color Sensor</span>
+                <span class="tag-label">K-Means</span>
+                <span class="tag-label">State Machine</span>
+                <span class="tag-label">Robotics</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <div class="max-w-4xl mx-auto flex flex-col items-center justify-center gap-2 text-center pb-10">
+      <p class="text-sm">© 2026 Chris KY - Built with Passion</p>
+    </div>
+
+    <script src="../assets/js/script.js"></script>
+  </body>
+</html>

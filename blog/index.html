@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme === "dark") document.documentElement.classList.add("dark");
+    })();
+  </script>
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Chris KY — Blog" />
+    <meta name="author" content="Chris KAMAL YOUSSEF" />
+    <title>Blog — Chris KY</title>
+
+    <link rel="icon" type="image/x-icon" href="../assets/images/chris_ky_logo.png" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+  </head>
+
+  <body class="bg-[#fef8ec] dark:bg-[#2c2621] text-brown-800 dark:text-[#e8dccf]">
+    <!-- Loader -->
+    <div
+      id="loader"
+      class="fixed inset-0 z-50 flex items-center justify-center bg-[#fdf6ec] dark:bg-[#2a1f1a] transition-opacity duration-500"
+    >
+      <div class="loader-inner">
+        <div class="loader-ring"></div>
+        <div class="loader-icon">✦</div>
+      </div>
+    </div>
+
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50 bg-[#fef8ec] dark:bg-[#2c2621] shadow-md">
+      <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        <a href="../index.html" class="text-2xl font-bold">Chris KY</a>
+
+        <div class="hidden md:flex items-center gap-6 font-medium">
+          <nav class="flex space-x-6">
+            <a href="../index.html" class="nav-link">← Portfolio</a>
+            <a href="index.html" class="nav-link">Blog Home</a>
+            <a href="../contact.html" class="nav-link">Contact</a>
+          </nav>
+          <button id="toggleTheme" class="theme-toggle p-2 rounded-full ml-2">🌓</button>
+        </div>
+
+        <div class="md:hidden flex items-center gap-3">
+          <button id="nav-toggle" class="focus:outline-none">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2"
+              viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+          <button id="toggleThemeMobile" class="theme-toggle p-2 rounded-full order-2">🌓</button>
+        </div>
+      </div>
+
+      <div id="mobile-menu" class="md:hidden hidden flex flex-col items-start space-y-3 pb-6 px-6 font-medium">
+        <a href="../index.html" class="nav-link">← Portfolio</a>
+        <a href="index.html" class="nav-link">Blog Home</a>
+        <a href="../contact.html" class="nav-link">Contact</a>
+      </div>
+    </header>
+
+    <section class="px-6 py-12 max-w-3xl mx-auto">
+      <!-- Header -->
+      <div class="text-center mb-12">
+        <h1 class="text-4xl md:text-5xl font-bold mb-3">Blog</h1>
+        <p class="text-lg opacity-70">Thoughts, personal life and things worth writing down.</p>
+      </div>
+
+      <!-- Posts -->
+      <div class="space-y-6">
+
+        <!-- Post: Designing the Future -->
+        <a href="posts/designing-future/index.html" class="block group">
+          <div class="rounded-2xl border border-opacity-20 border-current p-6 hover:shadow-md transition-shadow bg-white/30 dark:bg-black/20">
+            <p class="text-xs uppercase tracking-widest text-[#3c2b22] dark:text-[#c4a489] mb-2">May 2026</p>
+            <h2 class="text-xl font-semibold group-hover:underline mb-2 text-black blog-post-title">Building the Future While Exploring the Present</h2>
+            <p class="text-sm leading-relaxed text-[#3c2b22] dark:text-[#c4a489]">A personal look at curiosity, learning, travel, sport, and the mindset that shapes how I work and live.</p>
+          </div>
+        </a>
+
+        <!-- Post: UnitedXR Europe -->
+        <a href="posts/unitedxr-europe/index.html" class="block group">
+          <div class="rounded-2xl border border-opacity-20 border-current p-6 hover:shadow-md transition-shadow bg-white/30 dark:bg-black/20">
+            <p class="text-xs uppercase tracking-widest text-[#3c2b22] dark:text-[#c4a489] mb-2">August 2024</p>
+            <h2 class="text-xl font-semibold group-hover:underline mb-2 text-black blog-post-title">A Few Days at UnitedXR Europe</h2>
+            <p class="text-sm leading-relaxed text-[#3c2b22] dark:text-[#c4a489]">Three days in Brussels listening to people talk about identity, ethics, and the future of XR.</p>
+          </div>
+        </a>
+
+        <!-- Post: Reason I Love This Domain -->
+        <a href="posts/love-this-domain/index.html" class="block group">
+          <div class="rounded-2xl border border-opacity-20 border-current p-6 hover:shadow-md transition-shadow bg-white/30 dark:bg-black/20">
+            <p class="text-xs uppercase tracking-widest text-[#3c2b22] dark:text-[#c4a489] mb-2">May 2026</p>
+            <h2 class="text-xl font-semibold group-hover:underline mb-2 text-black blog-post-title">Why I Love Intelligent Robots</h2>
+            <p class="text-sm leading-relaxed text-[#3c2b22] dark:text-[#c4a489]">How a childhood love for inventions became my path into electronics, computer vision, AI, and intelligent robots.</p>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <div class="max-w-3xl mx-auto flex flex-col items-center justify-center gap-2 text-center pb-10">
+      <p class="text-sm opacity-50">© 2026 Chris KY</p>
+    </div>
+
+    <script src="../assets/js/script.js"></script>
+  </body>
+</html>

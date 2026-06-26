@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme === "dark") document.documentElement.classList.add("dark");
+    })();
+  </script>
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Saudi Football Federation — AI & Computer Vision pipeline to track player performance: speed, distance, ball possession, passes, from low-quality broadcast footage."
+    />
+    <meta name="author" content="Chris KAMAL YOUSSEF" />
+    <title>Saudi Football Federation — AI Player Performance</title>
+
+    <link rel="icon" type="image/x-icon" href="../assets/images/chris_ky_logo.png" />
+
+    <!-- Tailwind CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+  </head>
+
+  <body class="bg-[#fef8ec] dark:bg-[#2c2621] text-brown-800 dark:text-[#e8dccf]">
+    <!-- Loader -->
+    <div
+      id="loader"
+      class="fixed inset-0 z-50 flex items-center justify-center bg-[#fdf6ec] dark:bg-[#2a1f1a] transition-opacity duration-500"
+    >
+      <div class="loader-inner">
+        <div class="loader-ring"></div>
+        <div class="loader-icon">✦</div>
+      </div>
+    </div>
+
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50 bg-[#fef8ec] dark:bg-[#2c2621] shadow-md">
+      <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        <a href="../index.html#about" class="text-2xl font-bold">Chris KY</a>
+
+        <div class="hidden md:flex items-center gap-6 font-medium">
+          <nav class="flex space-x-6">
+            <a href="../index.html" class="nav-link">Home</a>
+            <a href="../index.html#portfolio" class="nav-link">Projects</a>
+            <a href="../contact.html" class="nav-link">Contact</a>
+          </nav>
+          <button id="toggleTheme" class="theme-toggle p-2 rounded-full ml-2">🌓</button>
+        </div>
+
+        <div class="md:hidden flex items-center gap-3">
+          <button id="nav-toggle" class="focus:outline-none">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2"
+              viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+          <button id="toggleThemeMobile" class="theme-toggle p-2 rounded-full order-2">🌓</button>
+        </div>
+      </div>
+
+      <div id="mobile-menu" class="md:hidden hidden flex flex-col items-start space-y-3 pb-6 px-6 font-medium">
+        <a href="../index.html" class="nav-link">Home</a>
+        <a href="../index.html#portfolio" class="nav-link">Projects</a>
+        <a href="../contact.html" class="nav-link">Contact</a>
+      </div>
+    </header>
+
+    <section class="px-6 py-12 max-w-5xl mx-auto">
+      <!-- Title -->
+      <h1 class="text-4xl md:text-5xl font-bold text-center mb-3">
+        Saudi Football Federation — AI Player Performance
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="text-center text-lg opacity-90 mb-8">
+        Computer Vision &middot; Full Pipeline &middot; 2nd &amp; 3rd Division + U18
+      </p>
+
+      <!-- Tags -->
+      <div class="mb-8 flex flex-wrap gap-2 justify-center">
+        <span class="tag-label">Computer Vision</span>
+        <span class="tag-label">YOLO</span>
+        <span class="tag-label">Player Tracking</span>
+        <span class="tag-label">Speed Detection</span>
+        <span class="tag-label">Ball Possession</span>
+        <span class="tag-label">Pass Detection</span>
+        <span class="tag-label">Python</span>
+        <span class="tag-label">Data Pipeline</span>
+        <span class="tag-label">Labeling</span>
+        <span class="tag-label">Database</span>
+        <span class="tag-label">Low-Quality Video</span>
+      </div>
+
+      <!-- Timeline Sections -->
+      <div class="space-y-16">
+
+        <!-- Overview -->
+        <div class="timeline-section">
+          <div class="timeline-line"><div class="timeline-pad"></div></div>
+          <div class="timeline-content">
+            <h2 class="text-2xl font-semibold mb-4">Overview</h2>
+            <ul class="space-y-3 list-none">
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  Built a full AI and computer vision system for the Saudi Football Federation to automatically
+                  analyze player performance during matches.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  Covers 2nd and 3rd division leagues and U18 — not top-tier broadcast setups.
+                  Cameras are consumer-grade, mounted badly, and move constantly during games.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  Owned the entire pipeline: data collection, labeling, training, deployment, and the stats algorithms on top.
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- The Challenge -->
+        <div class="timeline-section">
+          <div class="timeline-line"><div class="timeline-pad"></div></div>
+          <div class="timeline-content">
+            <h2 class="text-2xl font-semibold mb-4">1) The Challenge — Bad Cameras, Moving Footage</h2>
+            <ul class="space-y-3 list-none">
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  Lower division football doesn't have top-quality production. Cameras shake, zoom in and out,
+                  cut between angles, and footage quality is far from broadcast standard.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  Camera movement breaks naive tracking — a player's position changes even when they're standing still
+                  if the camera pans. All metrics that depend on position (speed, distance) have to account for this.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  Models trained on clean, high-resolution data don't generalize. Had to build the training set
+                  from the actual footage — same cameras, same conditions.
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Data Pipeline -->
+        <div class="timeline-section">
+          <div class="timeline-line"><div class="timeline-pad"></div></div>
+          <div class="timeline-content">
+            <h2 class="text-2xl font-semibold mb-4">2) Data Pipeline — Collect, Label, Train, Deploy</h2>
+            <ul class="space-y-3 list-none">
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  <strong>Collect:</strong> extracted frames from match recordings across multiple games and camera setups.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  <strong>Label:</strong> annotated players, ball, and relevant zones — handling occlusion, motion blur,
+                  and the variety of lighting conditions in different stadiums.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  <strong>Train:</strong> trained detection models on this domain-specific dataset so they perform
+                  reliably on the actual camera quality and conditions.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  <strong>Deploy:</strong> built the inference pipeline to process match video and output structured data per player per frame.
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Player Detection & Tracking -->
+        <div class="timeline-section">
+          <div class="timeline-line"><div class="timeline-pad"></div></div>
+          <div class="timeline-content">
+            <h2 class="text-2xl font-semibold mb-4">3) Player Detection &amp; Tracking</h2>
+            <ul class="space-y-3 list-none">
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  Detected and tracked every player across frames throughout the match — maintaining consistent
+                  identity even through occlusions, camera cuts, and movement.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  Tracked the ball separately and linked ball position to nearby players for possession and pass detection.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  Compensated for camera movement so that tracked positions map to real field coordinates,
+                  not raw pixel positions that shift with every pan or zoom.
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Stats Algorithms -->
+        <div class="timeline-section">
+          <div class="timeline-line"><div class="timeline-pad"></div></div>
+          <div class="timeline-content">
+            <h2 class="text-2xl font-semibold mb-4">4) Performance Stats — Speed, Distance, Possession, Passes</h2>
+            <ul class="space-y-3 list-none">
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  <strong>Speed:</strong> computed from positional delta per frame, calibrated against real field dimensions
+                  using the pitch lines as reference scale.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  <strong>Distance travelled:</strong> accumulated over the full match per player, separating walking,
+                  jogging, and sprinting phases.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  <strong>Ball possession:</strong> detected which player controls the ball at any given moment,
+                  aggregated over the match for individual and team totals.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  <strong>Passes:</strong> detected pass events — ball leaving one player and arriving at another —
+                  with success/fail classification and direction.
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Database -->
+        <div class="timeline-section">
+          <div class="timeline-line"><div class="timeline-pad"></div></div>
+          <div class="timeline-content">
+            <h2 class="text-2xl font-semibold mb-4">5) Player Database &amp; Stats Storage</h2>
+            <ul class="space-y-3 list-none">
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  All stats are stored per player per match — building a historical database that accumulates
+                  performance data over the season.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  Enables comparison across games, tracking of player development, and data-driven selection decisions
+                  for the coaching staff.
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- What I Did -->
+        <div class="timeline-section">
+          <div class="timeline-line"><div class="timeline-pad"></div></div>
+          <div class="timeline-content">
+            <h2 class="text-2xl font-semibold mb-4">What I Did</h2>
+            <ul class="space-y-3 list-none">
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>Built the full data pipeline from scratch: collection, labeling, training, and deployment.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>Trained detection models on domain-specific data to handle low-quality, moving footage.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>Built player and ball tracking with camera-motion compensation.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>Developed algorithms for speed, distance, possession, and pass detection.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>Designed and populated a player stats database for match-by-match performance tracking.</span>
+              </li>
+            </ul>
+
+            <div class="mt-6">
+              <p class="font-semibold mb-2">Tech Stack</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="tag-label">Python</span>
+                <span class="tag-label">YOLO</span>
+                <span class="tag-label">Computer Vision</span>
+                <span class="tag-label">Player Tracking</span>
+                <span class="tag-label">OpenCV</span>
+                <span class="tag-label">Data Labeling</span>
+                <span class="tag-label">Database</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Image Gallery -->
+      <div class="mt-20">
+        <h2 class="text-2xl font-semibold mb-8 text-center">Examples</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+
+          <div class="flex flex-col gap-2">
+            <img
+              src="../assets/images/projects/SaudiFF/player-detection.jpg"
+              alt="Player detection on match footage"
+              class="rounded-2xl shadow-lg w-full object-cover"
+              style="aspect-ratio: 16/9;"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <div class="rounded-2xl shadow-lg w-full bg-[#f0f0e8] dark:bg-[#1a1a14] items-center justify-center text-center p-10 opacity-50 hidden" style="aspect-ratio: 16/9;">
+              <span class="text-sm">player-detection.jpg</span>
+            </div>
+            <p class="text-sm opacity-60 text-center">Player detection on live match footage</p>
+          </div>
+
+          <div class="flex flex-col gap-2">
+            <img
+              src="../assets/images/projects/SaudiFF/speed-tracking.jpg"
+              alt="Speed and distance tracking overlay"
+              class="rounded-2xl shadow-lg w-full object-cover"
+              style="aspect-ratio: 16/9;"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <div class="rounded-2xl shadow-lg w-full bg-[#f0f0e8] dark:bg-[#1a1a14] items-center justify-center text-center p-10 opacity-50 hidden" style="aspect-ratio: 16/9;">
+              <span class="text-sm">speed-tracking.jpg</span>
+            </div>
+            <p class="text-sm opacity-60 text-center">Speed and distance tracking overlay</p>
+          </div>
+
+          <div class="flex flex-col gap-2">
+            <img
+              src="../assets/images/projects/SaudiFF/ball-possession.jpg"
+              alt="Ball possession and pass detection"
+              class="rounded-2xl shadow-lg w-full object-cover"
+              style="aspect-ratio: 16/9;"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <div class="rounded-2xl shadow-lg w-full bg-[#f0f0e8] dark:bg-[#1a1a14] items-center justify-center text-center p-10 opacity-50 hidden" style="aspect-ratio: 16/9;">
+              <span class="text-sm">ball-possession.jpg</span>
+            </div>
+            <p class="text-sm opacity-60 text-center">Ball possession and pass detection</p>
+          </div>
+
+          <div class="flex flex-col gap-2">
+            <img
+              src="../assets/images/projects/SaudiFF/player-stats.jpg"
+              alt="Player stats dashboard"
+              class="rounded-2xl shadow-lg w-full object-cover"
+              style="aspect-ratio: 16/9;"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <div class="rounded-2xl shadow-lg w-full bg-[#f0f0e8] dark:bg-[#1a1a14] items-center justify-center text-center p-10 opacity-50 hidden" style="aspect-ratio: 16/9;">
+              <span class="text-sm">player-stats.jpg</span>
+            </div>
+            <p class="text-sm opacity-60 text-center">Player stats database output</p>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Footer -->
+    <div class="max-w-4xl mx-auto flex flex-col items-center justify-center gap-2 text-center pb-10">
+      <p class="text-sm">© 2026 Chris KY - Built with Passion</p>
+    </div>
+
+    <!-- JS -->
+    <script src="../assets/js/script.js"></script>
+  </body>
+</html>

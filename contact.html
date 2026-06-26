@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+  <script>
+    // Early theme application before page render to prevent flicker
+    (function () {
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme === "dark") {
+        document.documentElement.classList.add("dark");
+      }
+    })();
+  </script>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chris KY | Computer Vision & AI Engineer</title>
+
+  <!-- Tailwind CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+
+  <!-- Font Awesome for social icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- Your CSS -->
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="icon" type="image/x-icon" href="assets/images/chris_ky_logo.png">
+</head>
+
+<body>
+  <div id="loader" class="fixed inset-0 z-50 flex items-center justify-center bg-[#fdf6ec] dark:bg-[#2a1f1a] transition-opacity duration-500">
+    <div class="loader-inner">
+      <div class="loader-ring"></div>
+      <div class="loader-icon">
+        🤖
+      </div>
+    </div>
+  </div>
+
+  <header class="sticky top-0 z-50 bg-[#fef8ec] dark:bg-[#2c2621] shadow-md">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <!-- Logo -->
+      <a href="index.html#about" class="text-2xl font-bold text-brown-800 dark:text-[#e8dccf]">
+        Chris&nbsp;KY
+      </a>
+
+      <!-- Desktop Nav -->
+      <div class="hidden md:flex items-center gap-6 text-brown-800 dark:text-[#e8dccf] font-medium">
+        <nav class="flex space-x-6">
+          <a href="index.html#about" class="nav-link">Home</a>
+        </nav>
+        <!-- Theme Toggle -->
+        <button id="toggleTheme" class="theme-toggle p-2 rounded-full ml-2">🌓</button>
+      </div>
+
+      <!-- Mobile Nav -->
+      <div class="md:hidden flex items-center gap-3">
+        <button id="nav-toggle" class="focus:outline-none order-1">
+          <svg class="w-7 h-7 text-brown-800 dark:text-[#e8dccf]" fill="none" stroke="currentColor" stroke-width="2"
+               viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+        <button id="toggleThemeMobile" class="theme-toggle p-2 rounded-full order-2">🌓</button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="md:hidden hidden flex flex-col items-start space-y-3 pb-6 px-6 text-brown-800 dark:text-[#e8dccf] font-medium">
+      <a href="index.html#about" class="nav-link">Home</a>
+    </div>
+  </header>
+
+  <!-- Freelance availability -->
+  <section id="support" class="py-16 px-6 bg-[#fdf6ec] dark:bg-[#2c2621] text-center">
+    <h2 class="text-3xl md:text-4xl font-bold mb-4 text-brown-800 dark:text-[#e8dccf]">
+      Freelance Availability
+    </h2>
+    <p class="max-w-2xl mx-auto text-brown-700 dark:text-[#e8dccf] text-sm md:text-base">
+      Based in <strong>Paris</strong>, open to <strong>remote</strong> or <strong>hybrid</strong> roles and ready to
+      relocate worldwide.<br />
+      Working across <strong>Computer Vision &amp; AI</strong>, <strong>Robotics</strong>, and
+      <strong>XR / Mixed Reality</strong>.
+    </p>
+  </section>
+
+  <!-- Get in Touch (left) + Resume (right) -->
+  <section class="py-20 px-6 bg-[#fdf6ec] dark:bg-[#2a1f1a] text-brown-800 dark:text-[#e8dccf]">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+      <!-- Get in Touch -->
+      <div class="flex flex-col items-center text-center">
+        <h1 class="text-3xl md:text-4xl font-bold mb-6 md:mb-8">Get in Touch</h1>
+        <p class="mb-6 text-sm md:text-base max-w-md">
+          Get in touch for freelance missions, interesting projects, or hackathon team formation.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+
+          <!-- LinkedIn -->
+          <a href="https://www.linkedin.com/in/chris-ky/" target="_blank"
+             class="social-button px-6 py-3 rounded-full font-semibold shadow-md bg-[#0077b5] btn-dark-custom hover:bg-[#005885] transition">
+            <i class="fab fa-linkedin social-icon"></i> LinkedIn
+          </a>
+
+          <!-- Email -->
+          <a href="mailto:chris11499@outlook.com"
+             class="social-button px-6 py-3 rounded-full font-semibold shadow-md bg-[#e8c674] btn-dark-custom hover:bg-yellow-400 dark:hover:bg-yellow-500 transition">
+            <i class="fas fa-envelope social-icon"></i> Email
+          </a>
+
+          <!-- GitHub (optional, uncomment and fill href) -->
+          <!--
+          <a href="#" target="_blank"
+             class="social-button px-6 py-3 rounded-full font-semibold shadow-md bg-[#181717] btn-dark-custom hover:bg-[#24292e] transition">
+            <i class="fab fa-github social-icon"></i> GitHub
+          </a>
+          -->
+
+        </div>
+      </div>
+
+      <!-- Resume -->
+      <div class="flex flex-col items-center text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6 md:mb-8">Resume</h2>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="assets/files/CV_Chris.pdf" download
+             class="social-button flex items-center gap-2 px-6 py-3 rounded-full bg-[#e8c674] dark:bg-yellow-600 text-brown-900 dark:text-[#2c2621] font-semibold shadow hover:bg-yellow-400 dark:hover:bg-yellow-500 transition">
+            <i class="fas fa-file-pdf social-icon"></i> Download CV
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience & Education (timeline) -->
+  <section class="py-20 px-6 bg-[#fdf6ec] dark:bg-[#2a1f1a] text-brown-800 dark:text-[#e8dccf]">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Experience &amp; Education</h2>
+
+    <!-- Timeline Grid -->
+    <div class="grid md:grid-cols-2 gap-16 max-w-6xl mx-auto">
+
+<!-- Professional Experience -->
+<div>
+  <h3 class="text-2xl font-bold mb-8">Professional Experience</h3>
+  <div class="space-y-16">
+
+    <!-- SAFF / Football -->
+    <div class="timeline-section">
+      <div class="timeline-line">
+        <div class="timeline-pad">
+          <img src="assets/images/logos/saff.png" alt="SAFF logo" class="timeline-logo">
+        </div>
+      </div>
+      <div class="timeline-content">
+        <h4 class="text-xl font-semibold mb-1">Computer Vision &amp; AI Engineer – Football Analytics</h4>
+        <p class="text-sm text-yellow-700 mb-2">11/2025 — Present | Freelance – Remote</p>
+        <ul class="list-disc list-inside text-sm space-y-1">
+          <li>Computer Vision &amp; Machine Learning to analyze football players’ performance for a football federation.</li>
+          <li>Player tracking and event detection from match videos, towards intelligent performance metrics.</li>
+          <li>Designing a scalable pipeline suitable for low-quality broadcast videos.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- SkyAI / Nicomatic -->
+    <div class="timeline-section">
+      <div class="timeline-line">
+        <div class="timeline-pad">
+          <img src="assets/images/logos/nicomatic.png" alt="Nicomatic logo" class="timeline-logo">
+        </div>
+      </div>
+      <div class="timeline-content">
+        <h4 class="text-xl font-semibold mb-1">Computer Vision &amp; Robotics Engineer – SkyAI</h4>
+        <p class="text-sm text-yellow-700 mb-2">07/2025 — Present | Nicomatic – Remote / France</p>
+        <ul class="list-disc list-inside text-sm space-y-1">
+          <li>GPS-less autonomous drone running real-time visual odometry on Raspberry Pi 4.</li>
+          <li>Keypoint detection, feature matching, affine transform estimation and projection on map tiles.</li>
+          <li>Tracking ground objects and estimating direction &amp; speed while the drone is moving irregularly.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Shark Robotics -->
+    <div class="timeline-section">
+      <div class="timeline-line">
+        <div class="timeline-pad">
+          <img src="assets/images/logos/shark.png" alt="Shark Robotics logo" class="timeline-logo">
+        </div>
+      </div>
+      <div class="timeline-content">
+        <h4 class="text-xl font-semibold mb-1">Robotics, AI &amp; Computer Vision Engineer</h4>
+        <p class="text-sm text-yellow-700 mb-2">08/2024 — 02/2025 | Shark Robotics, La Rochelle, France</p>
+        <ul class="list-disc list-inside text-sm space-y-1">
+          <li>Lead autonomy development for firefighting AMR: visual odometry, LiDAR, ultrasound, and CV stack.</li>
+          <li>Training and deploying neural networks for multiple perception tasks.</li>
+          <li>Managing sensor suite (cameras, LiDAR, ultrasound) across the robot fleet.</li>
+          <li>Coding in <strong>Python</strong> and <strong>ROS&nbsp;2</strong>.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Airbus -->
+    <div class="timeline-section">
+      <div class="timeline-line">
+        <div class="timeline-pad">
+          <img src="assets/images/logos/airbus.png" alt="Airbus logo" class="timeline-logo">
+        </div>
+      </div>
+      <div class="timeline-content">
+        <h4 class="text-xl font-semibold mb-1">Python Developer</h4>
+        <p class="text-sm text-yellow-700 mb-2">02/2024 — 08/2024 | Airbus, Toulouse, France</p>
+        <ul class="list-disc list-inside text-sm space-y-1">
+          <li>Refactored a legacy Python codebase (tens of large scripts) into a clean, modular library used across teams.</li>
+          <li>Applied <strong>design patterns</strong> (Builder, Strategy) to improve readability and scalability.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ALTEN Labs -->
+    <div class="timeline-section">
+      <div class="timeline-line">
+        <div class="timeline-pad">
+          <img src="assets/images/logos/alten.png" alt="ALTEN logo" class="timeline-logo">
+        </div>
+      </div>
+      <div class="timeline-content">
+        <h4 class="text-xl font-semibold mb-1">Computer Vision Engineer</h4>
+        <p class="text-sm text-yellow-700 mb-2">10/2023 — 02/2024 | ALTEN Labs, Toulouse, France</p>
+        <ul class="list-disc list-inside text-sm space-y-1">
+          <li>Contributed to the <strong>Smart Factory 4.0</strong> research project.</li>
+          <li>Optimized Computer Vision algorithms and Neural Networks for object detection and segmentation.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+      <!-- Education -->
+      <div>
+        <h3 class="text-2xl font-bold mb-8">Education</h3>
+        <div class="space-y-16">
+
+          <!-- Entry 1 -->
+          <div class="timeline-section">
+            <div class="timeline-line">
+              <div class="timeline-pad"></div>
+            </div>
+            <div class="timeline-content">
+              <h4 class="text-lg font-semibold mb-1">
+                Master’s – Automatic, Robotics: Intelligent Systems Engineering (ISI)
+              </h4>
+              <p class="text-sm text-yellow-700 mb-2">
+                09/2021 – 09/2023 | Sorbonne University, Paris, France
+              </p>
+              <ul class="list-disc list-inside text-sm space-y-1">
+                <li>Option <strong>“Information processing”</strong>.</li>
+                <li>Image, sound and signal processing, AI &amp; deep neural networks.</li>
+                <li>Biometrics, Virtual Reality, bio-inspired vision.</li>
+                <li>Robotics and <strong>ROS&nbsp;2</strong>.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Entry 2: 2nd & 3rd year in Grenoble -->
+          <div class="timeline-section">
+            <div class="timeline-line">
+              <div class="timeline-pad"></div>
+            </div>
+            <div class="timeline-content">
+              <h4 class="text-lg font-semibold mb-1">
+                Bachelor’s – Electronics, Electrical Energy, Automatic (EEA)
+              </h4>
+              <p class="text-sm text-yellow-700 mb-2">
+                2019 – 2021 | Grenoble-Alpes University, Grenoble, France
+              </p>
+              <ul class="list-disc list-inside text-sm space-y-1">
+                <li>2nd and 3rd year of the EEA Bachelor</li>
+                <li>Ranked <strong>2nd</strong> in my year, with an overall average of <strong>17/20</strong>.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Entry 3: 1st year in Nantes -->
+          <div class="timeline-section">
+            <div class="timeline-line">
+              <div class="timeline-pad"></div>
+            </div>
+            <div class="timeline-content">
+              <h4 class="text-lg font-semibold mb-1">
+                Bachelor’s 1st year – Science of Engineering
+              </h4>
+              <p class="text-sm text-yellow-700 mb-2">
+                2018 – 2019 | Nantes University, Nantes, France
+              </p>
+              <ul class="list-disc list-inside text-sm space-y-1">
+                <li>Ranked <strong>2nd</strong> in my year.</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div> <!-- End of grid -->
+  </section>
+
+  <!-- Footer -->
+  <div class="max-w-4xl mx-auto flex flex-col items-center justify-center gap-2 text-center pb-8">
+    <p class="text-sm">© 2026 Chris KY - Built with Passion</p>
+    <div class="flex items-center gap-4 text-xl">
+      <!-- icons or links -->
+    </div>
+  </div>
+
+  <!-- JS -->
+  <script src="assets/js/script.js"></script>
+</body>
+</html>

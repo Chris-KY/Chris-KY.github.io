@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+  <script>
+    // Early theme application before page render to prevent flicker
+    (function () {
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme === "dark") {
+        document.documentElement.classList.add("dark");
+      }
+    })();
+  </script>
+  
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chris KY | Computer Vision & AI Engineer</title>
+
+  <!-- Tailwind CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+
+  <!-- Font Awesome for social icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- Your CSS -->
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="icon" type="image/x-icon" href="assets/images/chris_ky_logo.png">
+</head>
+<body>
+  <div id="loader" class="fixed inset-0 z-50 flex items-center justify-center bg-[#fdf6ec] dark:bg-[#2a1f1a] transition-opacity duration-500">
+    <div class="loader-inner">
+      <div class="loader-ring"></div>
+      <div class="loader-icon">
+        🐾
+      </div>
+    </div>
+  </div>
+
+  <header class="sticky top-0 z-50 bg-[#fef8ec] dark:bg-[#2c2621] shadow-md">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <!-- Logo -->
+      <a href="#about" class="text-2xl font-bold text-brown-800 dark:text-[#e8dccf]">Chris KY</a>
+  
+      <!-- Desktop Nav -->
+      <div class="hidden md:flex items-center gap-6 text-brown-800 dark:text-[#e8dccf] font-medium">
+        <nav class="flex space-x-6">
+          <a href="#about" class="nav-link">About</a>
+          <a href="#skills" class="nav-link">Skills</a>
+          <a href="#services" class="nav-link">Services</a>
+          <a href="#tools" class="nav-link">Tools</a>
+          <a href="#portfolio" class="nav-link">Projects</a>
+          <a href="./blog/index.html" class="nav-link">Blog</a>
+          <a href="contact.html" class="nav-link">Contact</a>
+        </nav>
+        <!-- Theme Toggle -->
+        <button id="toggleTheme" class="theme-toggle p-2 rounded-full ml-2">🌓</button>
+      </div>
+  
+      <!-- Mobile Nav -->
+      <div class="md:hidden flex items-center gap-3">
+        <button id="nav-toggle" class="focus:outline-none order-1">
+          <svg class="w-7 h-7 text-brown-800 dark:text-[#e8dccf]" fill="none" stroke="currentColor" stroke-width="2"
+               viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+        <button id="toggleThemeMobile" class="theme-toggle p-2 rounded-full order-2">🌓</button>
+      </div>
+    </div>
+  
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="md:hidden hidden flex flex-col items-start space-y-3 pb-6 px-6 text-brown-800 dark:text-[#e8dccf] font-medium">
+      <a href="#about" class="nav-link">About</a>
+      <a href="#skills" class="nav-link">Skills</a>
+      <a href="#services" class="nav-link">Services</a>
+      <a href="#opensource" class="nav-link">Tools</a>
+      <a href="#portfolio" class="nav-link">Projects</a>
+      <a href="blog/index.html" class="nav-link">Blog</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </div>
+  </header>
+  
+
+  <!-- Hero / About Me Section -->
+  <section id="about" class="py-8 flex flex-col-reverse md:flex-row items-center justify-center px-6 text-center md:text-left">
+    <div class="max-w-xl md:max-w-2xl lg:max-w-4xl space-y-6 flex-shrink-0 min-w-0">
+      <h1 class="text-4xl md:text-6xl font-bold leading-tight">
+        <div class="mb-5">Hey, I am Chris KY</div>
+        <div class="relative w-full text-center md:text-left">
+          <!-- Invisible placeholder to reserve space -->
+          <span class="invisible text-yellow-500 text-4xl md:text-6xl font-bold block">
+            a Curious Engineer
+          </span>
+        
+          <!-- Animated text -->
+          <span
+            id="typewriter"
+            class="absolute inset-0 text-yellow-500 text-4xl md:text-6xl font-bold block whitespace-nowrap"
+          ></span>
+        </div>        
+      </h1>
+      
+      <div class="text-lg md:text-xl space-y-3">
+        <p>Since I was a kid I wanted to build intelligent robots that could be my friends, like Gyro Gearloose or Donatello (from TMNT). That dream never left.</p>
+        <p>Today I am a Computer Vision &amp; AI Engineer based in Paris, building robots and autonomous drones that bring AI into the real world.</p>
+        <p>2x hackathon first-prize winner. I love R&amp;D and turning ideas into working systems.</p>
+        <p>You will find my skills, services and projects on this page. For more about me, check the Blog.</p>
+      </div>
+    </div>
+    <div class="mb-8 md:mb-0">
+      <div class="cat-container relative w-48 md:w-64 mx-auto">
+        <img src="assets/images/chris_ky_logo.png" alt="Chris KY avatar" class="w-full rounded-full shadow-lg" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Links Section -->
+  <section class="py-12 px-6 text-center bg-[#fdf6ec] dark:bg-[#2a1f1a] text-brown-800 dark:text-[#e8dccf]">
+    <h2 class="text-3xl md:text-4xl font-bold mb-8">Connect With Me</h2>
+    <div class="flex flex-wrap justify-center gap-6">
+
+      <!-- GitHub >
+      <a href="https://github.com/Chris-KY" target="_blank"
+         class="social-button px-6 py-3 rounded-full font-semibold shadow-md bg-[#181717] btn-dark-custom hover:bg-[#24292e] transition">
+        <i class="fab fa-github social-icon"></i> GitHub
+      </a-->
+
+      <!-- LinkedIn -->
+      <a href="https://www.linkedin.com/in/chris-ky/" target="_blank"
+         class="social-button px-6 py-3 rounded-full font-semibold shadow-md bg-[#0077b5] btn-dark-custom hover:bg-[#005885] transition">
+        <i class="fab fa-linkedin social-icon"></i> LinkedIn
+      </a>
+
+      <!-- Malt -->
+      <a href="https://www.malt.fr/profile/chriskamalyoussef" target="_blank"
+         class="social-button px-6 py-3 rounded-full font-semibold shadow-md bg-[#e8c674] btn-dark-custom hover:bg-yellow-400 dark:hover:bg-yellow-500 transition">
+        <i class="fas fa-briefcase social-icon"></i> Malt
+      </a>
+
+      <!-- Discord username -->
+      <button type="button"
+         class="social-button px-6 py-3 rounded-full font-semibold shadow-md bg-[#5865F2] btn-dark-custom hover:bg-[#4752c4] transition">
+        <i class="fab fa-discord social-icon"></i> Discord: chris_ky
+      </button>
+
+    </div>
+  </section>
+
+
+<!-- Tools & skills sections -->
+<section id="skills" class="py-16 px-6 bg-[#fef8ec] dark:bg-[#2c2621]">
+  <h2 class="text-3xl md:text-4xl font-bold text-center mb-10 text-brown-800 dark:text-[#e8dccf]">
+    Skills
+  </h2>
+
+  <div class="max-w-5xl mx-auto space-y-10">
+
+    <!-- Sub-Category: Core Programming -->
+    <div>
+      <h3 class="text-xl font-semibold mb-4 text-brown-700 dark:text-[#e8dccf]">Core Programming</h3>
+      <div class="flex flex-wrap gap-4">
+
+        <div class="skill-slot relative group">
+          <img src="assets/images/skills/programming/python.png" alt="Python" class="h-10 object-contain" />
+          <div class="tooltip-skill group-hover:opacity-100 group-hover:translate-y-1">Python</div>
+        </div>
+
+        <div class="skill-slot relative group">
+          <img src="assets/images/skills/programming/c++.png" alt="C++" class="h-10 object-contain" />
+          <div class="tooltip-skill group-hover:opacity-100 group-hover:translate-y-1">C++</div>
+        </div>
+
+        <!--div class="skill-slot relative group">
+          <img src="assets/images/skills/programming/js.png" alt="TypeScript" class="h-10 object-contain" />
+          <div class="tooltip-skill group-hover:opacity-100 group-hover:translate-y-1">TypeScript (apps/tools)</div>
+        </div-->
+
+        <div class="skill-slot relative group">
+          <img src="assets/images/skills/programming/C.png" alt="C" class="h-10 object-contain" />
+          <div class="tooltip-skill group-hover:opacity-100 group-hover:translate-y-1">C (embedded, low-level)</div>
+        </div>
+
+
+        <!-- Optional: keep only if it matters for your portfolio -->
+        <!--
+        <div class="skill-slot relative group">
+          <img src="assets/images/skills/programming/chsarp.png" alt="C# (Unity)" class="h-10 object-contain" />
+          <div class="tooltip-skill group-hover:opacity-100 group-hover:translate-y-1">C# (Unity tooling)</div>
+        </div>
+        -->
+
+      </div>
+    </div>
+
+    <!-- Sub-Category: Vision & Geometry (YOUR DIFFERENTIATOR) -->
+    <div>
+      <h3 class="text-xl font-semibold mb-4 text-brown-700 dark:text-[#e8dccf]">Vision &amp; Geometry</h3>
+      <div class="flex flex-wrap gap-4">
+
+        <div class="skill-slot relative group">
+          <img src="assets/images/skills/CV/OpenCV.png" alt="OpenCV" class="h-10 object-contain" />
+          <div class="tooltip-skill group-hover:opacity-100 group-hover:translate-y-1">
+            OpenCV (classical CV, geometry, optimization)
+          </div>
+        </div>
+
+        <div class="skill-slot relative group">
+          <img src="assets/images/skills/CV/geometric.png" alt="Geometric Vision" class="h-10 object-contain scale-150" />
+          <div class="tooltip-skill group-hover:opacity-100 group-hover:translate-y-1">
+            Geometric vision (calibration, homography, pose, epipolar)
+          </div>
+        </div>
+
+        <div class="skill-slot relative group">
+          <img src="assets/images/skills/CV/VO.png" alt="Visual Odometry" class="h-10 object-contain scale-150" />
+          <div class="tooltip-skill group-hover:opacity-100 group-hover:translate-y-1">
+            Visual Odometry (motion estimation, stabilization, trajectory)
+          </div>
+        </div>
+
+        <div class="skill-slot relative group">
+          <img src="assets/images/skills/CV/Optical_FLow.png" alt="Optical Flow & Tracking" class="h-10 object-contain scale-150" />
+          <div class="tooltip-skill group-hover:opacity-100 group-hover:translate-y-1">
+            Optical flow & tracking (video understanding, motion cues)
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Sub-Category: Deep Learning & CV Models -->
+    <div>
+      <h3 class="text-xl font-semibold mb-4 text-brown-700 dark:text-[#e8dccf]">Deep Learning &amp; CV Models</h3>
+      <div class="flex flex-wrap gap-4">
+
+        <div class="skill-slot relative group">
+          <img src="assets/images/skills/ml/pytorch.png" alt="PyTorch" class="h-10 object-contain" />
+          <div class="tooltip-skill group-hover:opacity-100 group-hover:translate-y-1">
+            PyTorch (training, fine-tuning, custom models)
+          </div>
+        </div>
+
+        <!-- Optional: keep only if you really use it in projects -->
+        <div class="skill-slot relative group">
+          <img src="assets/images/skills/ml/tf.png" alt="TensorFlow" class="h-10 object-contain" />
+          <div class="tooltip-skill group-hover:opacity-100 group-hover:translate-y-1">
+            TensorFlow (experience / legacy projects)
+          </div>
+        </div>
+
+        <div class="skill-slot relative group">
+          <img src="assets/images/skills/CV/Ultralytics Icon.png" alt="Ultralytics" class="h-10 object-contain" />
+          <div class="tooltip-skill group-hover:opacity-100 group-hover:translate-y-1">
+            Ultralytics (det/seg/pose + tracking)
+          </div>
+        </div>
+
+        <div class="skill-slot relative group">
+          <img src="assets/images/skills/CV/roboflow.svg" alt="Roboflow" class="h-10 object-contain" />
+          <div class="tooltip-skill group-hover:opacity-100 group-hover:translate-y-1">
+            Roboflow (datasets, labeling QA, training & deployment)
+          </div>
+        </div>
+
+        <div class="skill-slot relative group">
+          <img src="assets/images/skills/ml/scikit-learn.png" alt="scikit-learn" class="h-10 object-contain" />
+          <div class="tooltip-skill group-hover:opacity-100 group-hover:translate-y-1">
+            scikit-learn (baselines, evaluation, experimentation)
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Sub-Category: Data & Scientific Computing -->
+    <div>
+      <h3 class="text-xl font-semibold mb-4 text-brown-700 dark:text-[#e8dccf]">Data &amp; Scientific Computing</h3>
+      <div class="flex flex-wrap gap-4">
+
+        <div class="skill-slot relative group">
+          <img src="assets/images/skills/ml/pandas.png" alt="Pandas" class="h-10 object-contain" />
+          <div class="tooltip-skill group-hover:opacity-100 group-hover:translate-y-1">
+            Pandas (data prep, analytics, datasets)
+          </div>
+        </div>
+
+        <!-- Optional: add if you have icons -->
+        <!--
+        <div class="skill-slot relative group">
+          <img src="assets/images/skills/data/numpy.png" alt="NumPy" class="h-10 object-contain" />
+          <div class="tooltip-skill group-hover:opacity-100 group-hover:translate-y-1">NumPy (numerical computing)</div>
+        </div>
+        <div class="skill-slot relative group">
+          <img src="assets/images/skills/data/matplotlib.png" alt="Matplotlib" class="h-10 object-contain" />
+          <div class="tooltip-skill group-hover:opacity-100 group-hover:translate-y-1">Matplotlib (visualization)</div>
+        </div>
+        -->
+
+      </div>
+    </div>
+
+    <!-- Sub-Category: Robotics & Autonomy (LESS CLUTTER) -->
+    <div>
+      <h3 class="text-xl font-semibold mb-4 text-brown-700 dark:text-[#e8dccf]">Robotics &amp; Autonomy</h3>
+      <div class="flex flex-wrap gap-4">
+
+        <div class="skill-slot relative group">
+          <img src="assets/images/skills/hardware/ros2.png" alt="ROS 2" class="h-10 object-contain" />
+          <div class="tooltip-skill group-hover:opacity-100 group-hover:translate-y-1">
+            ROS 2 (integration, TF, pipelines)
+          </div>
+        </div>
+
+        <!-- Compress Gazebo + RViz into one slot (less “tool clutter”) -->
+        <div class="skill-slot relative group">
+          <img src="assets/images/skills/hardware/gazebo.png" alt="Gazebo / RViz" class="h-10 object-contain" />
+          <div class="tooltip-skill group-hover:opacity-100 group-hover:translate-y-1">
+            Simulation &amp; debugging (Gazebo, RViz)
+          </div>
+        </div>
+
+        <div class="skill-slot relative group">
+          <img src="assets/images/skills/hardware/MAVLINK.png" alt="MAVLink" class="h-10 object-contain" />
+          <div class="tooltip-skill group-hover:opacity-100 group-hover:translate-y-1">
+            MAVLink (telemetry, commands, missions)
+          </div>
+        </div>
+
+        <div class="skill-slot relative group">
+          <img src="assets/images/skills/hardware/INAV.png" alt="INAV" class="h-10 object-contain" />
+          <div class="tooltip-skill group-hover:opacity-100 group-hover:translate-y-1">
+            INAV (autopilot, tuning, mission workflow)
+          </div>
+        </div>
+
+        <div class="skill-slot relative group">
+          <img src="assets/images/skills/hardware/pi.png" alt="Raspberry Pi" class="h-10 object-contain" />
+          <div class="tooltip-skill group-hover:opacity-100 group-hover:translate-y-1">
+            Raspberry Pi (edge compute, sensors/cameras)
+          </div>
+        </div>
+
+        <!-- div class="skill-slot relative group">
+          <img src="assets/images/skills/hardware/stm32.png" alt="STM32" class="h-10 object-contain" />
+          <div class="tooltip-skill group-hover:opacity-100 group-hover:translate-y-1">
+            STM32 (embedded firmware, peripherals)
+          </div>
+        </div -->
+
+        <!-- Recommendation: remove Arduino unless you shipped something meaningful with it -->
+        <!-- Recommendation: remove TurtleBot3 unless you showcase a project with it -->
+
+      </div>
+    </div>
+
+    <!-- Sub-Category: Tools & Workflow -->
+    <div>
+      <h3 class="text-xl font-semibold mb-4 text-brown-700 dark:text-[#e8dccf]">Tools &amp; Workflow</h3>
+      <div class="flex flex-wrap gap-4">
+
+        <div class="skill-slot relative group">
+          <img src="assets/images/skills/tools/linux.png" alt="Linux" class="h-10 object-contain" />
+          <div class="tooltip-skill group-hover:opacity-100 group-hover:translate-y-1">Linux (dev & deployment)</div>
+        </div>
+
+        <div class="skill-slot relative group">
+          <img src="assets/images/skills/tools/git.png" alt="Git" class="h-10 object-contain" />
+          <div class="tooltip-skill group-hover:opacity-100 group-hover:translate-y-1">Git (collaboration, versioning)</div>
+        </div>
+
+        <div class="skill-slot relative group">
+          <img src="assets/images/skills/tools/Docker.png" alt="Docker" class="h-10 object-contain" />
+          <div class="tooltip-skill group-hover:opacity-100 group-hover:translate-y-1">Docker (reproducible environments)</div>
+        </div>
+
+        <div class="skill-slot relative group">
+          <img src="assets/images/skills/tools/VScode.png" alt="VS Code" class="h-10 object-contain" />
+          <div class="tooltip-skill group-hover:opacity-100 group-hover:translate-y-1">VS Code (dev workflow)</div>
+        </div>
+
+        <div class="skill-slot relative group">
+          <img src="assets/images/skills/tools/LaTeX_logo.png" alt="LaTeX" class="h-10 object-contain" />
+          <div class="tooltip-skill group-hover:opacity-100 group-hover:translate-y-1">LaTeX (technical writing)</div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+<!-- Services -->
+<section id="services" class="mt-[-40px] pb-16 px-6 bg-[#fef8ec] dark:bg-[#2c2621]">
+  <h2 class="text-3xl md:text-4xl font-bold text-center mb-10 text-brown-800 dark:text-[#e8dccf]">
+    What I Do
+  </h2>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+
+    <!-- Computer Vision Engineering -->
+    <div class="relative group service-card">
+      <img src="assets/images/icons/CV.png" alt="Computer Vision Engineering" class="w-12 h-12 mb-2" />
+      <span class="service-label">Computer Vision Engineering</span>
+      <div class="tooltip group-hover:opacity-100">
+        Detection, tracking, segmentation, multi-object tracking, optical flow, geometry, panorama stitching, and real-time perception from image & video streams.
+      </div>
+    </div>
+
+    <!-- Robotics & Autonomous Systems -->
+    <div class="relative group service-card">
+      <img src="assets/images/icons/Robotics.png" alt="Robotics & Autonomous Systems" class="w-12 h-12 mb-2" />
+      <span class="service-label">Robotics & Autonomous Systems</span>
+      <div class="tooltip group-hover:opacity-100">
+        Perception-driven autonomy for robots, and mobile platforms using ROS 2, Raspberry Pi, and multi-sensor fusion.
+      </div>
+    </div>
+
+    <!-- Deep Learning & Model Development -->
+    <div class="relative group service-card">
+      <img src="assets/images/icons/NN.png" alt="Deep Learning & Model Development" class="w-12 h-12 mb-2" />
+      <span class="service-label">Deep Learning & Model Development</span>
+      <div class="tooltip group-hover:opacity-100">
+        End-to-end ML pipelines: data labeling, training, fine-tuning, evaluation, deployment (YOLO, custom CNNs, transformers, PyTorch, sklearn).
+      </div>
+    </div>
+
+
+
+    <!-- Visual Geometry & Motion -->
+    <div class="relative group service-card">
+      <img src="assets/images/icons/Drone.png" alt="Visual Geometry & Motion" class="w-12 h-12 mb-2" />
+      <span class="service-label">Visual Geometry & Motion</span>
+      <div class="tooltip group-hover:opacity-100">
+        Visual Odometry, homography, epipolar geometry, pose estimation, camera calibration, and motion estimation for drones and mobile systems.
+      </div>
+    </div>
+
+
+    <!-- Data Analysis & Scientific Computing -->
+    <div class="relative group service-card">
+      <img src="assets/images/icons/Data.png" alt="Data Analysis & Scientific Computing" class="w-12 h-12 mb-2" />
+      <span class="service-label">Data Analysis & Scientific Computing</span>
+      <div class="tooltip group-hover:opacity-100">
+        Data preprocessing, feature engineering, statistical modeling, visualization, and ML experimentation using Python, Pandas, NumPy, and scikit-learn.
+      </div>
+    </div>
+
+    <!-- XR -->
+    <div id="tools" class="relative group service-card">
+      <img src="assets/images/icons/XR.png" alt="XR AI with Camera access" class="w-12 h-12 mb-2" />
+      <span class="service-label">XR "AI with Camera access"</span>
+      <div class="tooltip group-hover:opacity-100">
+        Computer Vision and AI for XR application on Unity.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- projects catalog-->
+<section id="portfolio" class="py-16 px-6 bg-[#fef8ec] dark:bg-[#2c2621]">
+  <h2 class="text-3xl md:text-4xl font-bold text-center mb-8 text-brown-800 dark:text-[#e8dccf]">My Projects</h2>
+
+  <!-- Category Filters -->
+  <div class="flex flex-wrap justify-center gap-4 mb-10">
+    <button class="filter-btn active" data-category="all">All</button>
+    <button class="filter-btn" data-category="work">Work</button>
+    <button class="filter-btn" data-category="personal">Personal</button>
+    <button class="filter-btn" data-category="competition">Competition</button>
+  </div>
+
+ <!-- Project Gallery -->
+<div id="project-gallery" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
+
+  <!-- Job: Nicomatic -->
+  <div class="project-card" data-category="work">
+    <a href="projects/nicomatic-gnss-drone.html">
+      <div class="project-thumb flex items-center justify-center bg-[#e8f0fe] dark:bg-[#0d1520]">
+        <img class="project-thumb object-center"  src="assets/images/projects/thumbnails/Nicomatic.jpeg" alt="River Project" class="project-thumb" />
+      </div>
+    </a>
+    <div class="project-info">
+      <h3 class="project-title">Nicomatic — GNSS-Denied Autonomous Drone (SkyAIs)</h3>
+      <p class="project-tags">Computer Vision • Visual Odometry • MAVLink • Pi 4 • Signal Processing • INAV</p>
+    </div>
+  </div>
+
+  <!-- Job: Shark Robotics -->
+  <div class="project-card" data-category="work">
+    <a href="projects/shark-robotics.html">
+      <div class="project-thumb flex items-center justify-center bg-[#fff0e6] dark:bg-[#1f0d00]">
+        <img class="project-thumb object-center"  src="assets/images/projects/thumbnails/Shark.png" alt="River Project" class="project-thumb" />
+      </div>
+    </a>
+    <div class="project-info">
+      <h3 class="project-title">Shark Robotics — Autonomous Firefighter Robot</h3>
+      <p class="project-tags">ROS 2 • Computer Vision • Thermal Camera • Dijkstra • RTSP • C++ • Ubuntu</p>
+    </div>
+  </div>
+
+  <!-- Job: Saudi Football Federation -->
+  <div class="project-card" data-category="work">
+    <a href="projects/saudi-football-federation.html">
+      <div class="project-thumb flex items-center justify-center bg-[#e6f4ea] dark:bg-[#0a1f0f]">
+        <span class="text-4xl">⚽</span>
+      </div>
+    </a>
+    <div class="project-info">
+      <h3 class="project-title">Saudi Football Federation — AI Player Performance</h3>
+      <p class="project-tags">Computer Vision • YOLO • Player Tracking • Speed • Possession • Python</p>
+    </div>
+  </div>
+
+  <!-- Project: SensAI Hackathon -->
+  <div class="project-card" data-category="competition">
+    <a href="projects/sensai-hackathon.html">
+      <div class="project-thumb flex items-center justify-center bg-[#fffbe6] dark:bg-[#1f1a00]">
+        <img class="project-thumb object-center"  src="assets/images/projects/thumbnails/sensAI.jpeg" alt="River Project" class="project-thumb" />
+      </div>
+    </a>
+    <div class="project-info">
+      <h3 class="project-title">SensAI x Meta XR Hackathon — 🏆 1st Place</h3>
+      <p class="project-tags">Unity • Meta Quest 3 • Roboflow • Computer Vision • XR</p>
+    </div>
+  </div>
+
+  <!-- Hackathon: Empower XR — FocusProVision -->
+  <div class="project-card" data-category="competition">
+    <a href="projects/focusprovision.html">
+      <div class="project-thumb flex items-center justify-center bg-[#f0f4ff] dark:bg-[#0d1a2e]">
+        <img class="project-thumb object-center"  src="assets/images/projects/thumbnails/EmpowerXR.png" alt="River Project" class="project-thumb" />
+      </div>
+    </a>
+    <div class="project-info">
+      <h3 class="project-title">FocusProVision — Empower XR Hackathon 🏆 1st Place</h3>
+      <p class="project-tags">XR • Computer Vision • Roboflow • Accessibility • Human Detection</p>
+    </div>
+  </div>
+
+  <!-- Job: Airbus -->
+  <div class="project-card" data-category="work">
+    <a href="projects/airbus.html">
+      <div class="project-thumb flex items-center justify-center bg-[#f0f4ff] dark:bg-[#1a1f2e]">
+        <img class="project-thumb object-center"  src="assets/images/projects/thumbnails/airbus.png" alt="River Project" class="project-thumb" />
+      </div>
+    </a>
+    <div class="project-info">
+      <h3 class="project-title">Airbus — Python Developer</h3>
+      <p class="project-tags">Python • Design Patterns • Refactoring • Aerospace</p>
+    </div>
+  </div>
+
+  <!-- Job: ALTEN -->
+  <div class="project-card" data-category="work">
+    <a href="projects/alten-labs.html">
+      <div class="project-thumb flex items-center justify-center bg-[#e8f4fd] dark:bg-[#0d1a26]">
+        <img class="project-thumb object-center"  src="assets/images/projects/thumbnails/Alten_labs.jpeg" alt="River Project" class="project-thumb" />
+      </div>
+    </a>
+    <div class="project-info">
+      <h3 class="project-title">ALTEN Labs — Smart Factory 4.0</h3>
+      <p class="project-tags">Computer Vision • Optical Flow • Kalman Filter • YOLO • ROS 2 • SLAM • Robotics</p>
+    </div>
+  </div>
+
+  <!-- Job: INERIS -->
+  <div class="project-card" data-category="work">
+    <a href="projects/ineris.html">
+      <div class="project-thumb flex items-center justify-center bg-[#f0fff4] dark:bg-[#0f1f15]">
+        <img class="project-thumb object-center"  src="assets/images/projects/thumbnails/INERIS.jpeg" alt="River Project" class="project-thumb" />
+      </div>
+    </a>
+    <div class="project-info">
+      <h3 class="project-title">INERIS — Image Processing Internship</h3>
+      <p class="project-tags">Computer Vision • YOLOv5 • Optical Flow • STM32 • Drones</p>
+    </div>
+  </div>
+
+  <!-- Project: Paris Autonomous Car Cup -->
+  <div class="project-card" data-category="competition">
+    <a href="projects/paris-car-cup.html">
+      <div class="project-thumb flex items-center justify-center bg-[#e8f5e9] dark:bg-[#0a1f0a]">
+        <img class="project-thumb object-center"  src="assets/images/projects/thumbnails/Paris.jpeg" alt="River Project" class="project-thumb" />
+      </div>
+    </a>
+    <div class="project-info">
+      <h3 class="project-title">Paris Autonomous Car Cup</h3>
+      <p class="project-tags">ROS 2 • Python • Gazebo • RViz • Turtlebot3 • LIDAR</p>
+    </div>
+  </div>
+
+  <!-- Job: Canada -->
+  <div class="project-card" data-category="work">
+    <a href="projects/piezoelectric-signal-processing.html">
+      <div class="project-thumb flex items-center justify-center bg-[#fff0e6] dark:bg-[#1f0d00]">
+        <img class="project-thumb object-center"  src="assets/images/projects/thumbnails/montreal.png" alt="River Project" class="project-thumb" />
+      </div>
+    </a>
+    <div class="project-info">
+      <h3 class="project-title">Polytechnique Montréal - Signal Processing Piezoelectric Sensors</h3>
+      <p class="project-tags">Signal Processing • ML • Arduino • Embedded</p>
+    </div>
+  </div>
+
+  <!-- Project: Drone Arm Control -->
+  <div class="project-card" data-category="personal">
+    <a href="projects/drone-arm-control.html">
+      <div class="project-thumb flex items-center justify-center bg-[#f5f0ff] dark:bg-[#1a1530]">
+        <img class="project-thumb object-center"  src="assets/images/projects/thumbnails/drone_arm.jpeg" alt="River Project" class="project-thumb" />
+      </div>
+    </a>
+    <div class="project-info">
+      <h3 class="project-title">Drone Arm Control</h3>
+      <p class="project-tags">Arduino • MAVLink • ArduPilot • Raspberry Pi 5 • Python</p>
+    </div>
+  </div>
+
+  <!-- Project: Coupe de France de Robotique -->
+  <div class="project-card" data-category="competition">
+    <a href="projects/coupe-robotique.html">
+      <div class="project-thumb flex items-center justify-center bg-[#fff0f0] dark:bg-[#1f0a0a]">
+        <img class="project-thumb object-center"  src="assets/images/projects/thumbnails/coupe.png" alt="River Project" class="project-thumb" />
+      </div>
+    </a>
+    <div class="project-info">
+      <h3 class="project-title">Coupe de France de Robotique</h3>
+      <p class="project-tags">C • STM32 • Color Detection • K-Means • Motors</p>
+    </div>
+  </div>
+
+  <!-- Project: Autonomous Car -->
+  <div class="project-card" data-category="personal">
+    <a href="projects/autonomous-car.html">
+      <div class="project-thumb flex items-center justify-center bg-[#fff5e6] dark:bg-[#1f1508]">
+        <img class="project-thumb object-center"  src="assets/images/projects/thumbnails/robots.png" alt="River Project" class="project-thumb" />
+      </div>
+    </a>
+    <div class="project-info">
+      <h3 class="project-title">Low-Level Autonomous Car</h3>
+      <p class="project-tags">C • STM32 • Embedded • Obstacle Avoidance • Line Following</p>
+    </div>
+  </div>
+
+  <!-- Job: Candide Atelier -->
+  <div class="project-card" data-category="work">
+    <a href="projects/candide-atelier.html">
+      <div class="project-thumb flex items-center justify-center bg-[#f0fff4] dark:bg-[#0f1f15]">
+        <img class="project-thumb object-center"  src="assets/images/projects/thumbnails/candide.png" alt="River Project" class="project-thumb" />
+      </div>
+    </a>
+    <div class="project-info">
+      <h3 class="project-title">Candide Atelier — Crypto Dev</h3>
+      <p class="project-tags">TypeScript • Web3 • Smart Wallets • Freelance</p>
+    </div>
+  </div>
+
+</div>
+<!-- No projects message -->
+<p id="no-projects" class="hidden text-center text-brown-800 dark:text-[#e8dccf] text-lg mt-6">
+  No projects found for this category.
+</p>
+</section>
+
+ <!-- Footer -->
+ <div class="max-w-4xl mx-auto flex flex-col items-center justify-center gap-2 text-center">
+  <p class="text-sm">© 2026 Chris KY - Built with Passion</p>
+  <div class="flex items-center gap-4 text-xl">
+    <!-- icons or links -->
+  </div>
+</div>
+
+
+  <!-- JS -->
+  <script src="assets/js/script.js"></script>
+</body>
+</html>

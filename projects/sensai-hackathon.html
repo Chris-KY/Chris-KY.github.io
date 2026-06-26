@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme === "dark") document.documentElement.classList.add("dark");
+    })();
+  </script>
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="SensAI x Meta XR Hackathon 2025 — First Place, XR car-repair assistant on Meta Quest 3"
+    />
+    <meta name="author" content="Chris KAMAL YOUSSEF" />
+    <title>SensAI x Meta XR Hackathon — First Place</title>
+
+    <link rel="icon" type="image/x-icon" href="../assets/images/chris_ky_logo.png" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+  </head>
+
+  <body class="bg-[#fef8ec] dark:bg-[#2c2621] text-brown-800 dark:text-[#e8dccf]">
+    <!-- Loader -->
+    <div
+      id="loader"
+      class="fixed inset-0 z-50 flex items-center justify-center bg-[#fdf6ec] dark:bg-[#2a1f1a] transition-opacity duration-500"
+    >
+      <div class="loader-inner">
+        <div class="loader-ring"></div>
+        <div class="loader-icon">✦</div>
+      </div>
+    </div>
+
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50 bg-[#fef8ec] dark:bg-[#2c2621] shadow-md">
+      <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        <a href="../index.html#about" class="text-2xl font-bold">Chris KY</a>
+
+        <div class="hidden md:flex items-center gap-6 font-medium">
+          <nav class="flex space-x-6">
+            <a href="../index.html" class="nav-link">Home</a>
+            <a href="../index.html#portfolio" class="nav-link">Projects</a>
+            <a href="../contact.html" class="nav-link">Contact</a>
+          </nav>
+          <button id="toggleTheme" class="theme-toggle p-2 rounded-full ml-2">🌓</button>
+        </div>
+
+        <div class="md:hidden flex items-center gap-3">
+          <button id="nav-toggle" class="focus:outline-none">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2"
+              viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+          <button id="toggleThemeMobile" class="theme-toggle p-2 rounded-full order-2">🌓</button>
+        </div>
+      </div>
+
+      <div id="mobile-menu" class="md:hidden hidden flex flex-col items-start space-y-3 pb-6 px-6 font-medium">
+        <a href="../index.html" class="nav-link">Home</a>
+        <a href="../index.html#portfolio" class="nav-link">Projects</a>
+        <a href="../contact.html" class="nav-link">Contact</a>
+      </div>
+    </header>
+
+    <section class="px-6 py-12 max-w-5xl mx-auto">
+      <!-- Title -->
+      <h1 class="text-4xl md:text-5xl font-bold text-center mb-3">
+        SensAI x Meta XR Hackathon
+      </h1>
+
+      <!-- Prize badge -->
+      <div class="flex justify-center mb-4">
+        <span class="px-4 py-1 rounded-full text-sm font-semibold bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200">
+          🏆 First Place — 2025
+        </span>
+      </div>
+
+      <!-- Subtitle -->
+      <p class="text-center text-lg opacity-90 mb-8">
+        48-hour Hackathon &middot; Meta Quest 3 &middot; XR + Computer Vision
+      </p>
+
+      <!-- Tags -->
+      <div class="mb-8 flex flex-wrap gap-2 justify-center">
+        <span class="tag-label">Unity</span>
+        <span class="tag-label">Meta Quest 3</span>
+        <span class="tag-label">Roboflow</span>
+        <span class="tag-label">Computer Vision</span>
+        <span class="tag-label">XR</span>
+        <span class="tag-label">Instance Segmentation</span>
+        <span class="tag-label">C#</span>
+      </div>
+
+      <!-- Timeline Sections -->
+      <div class="space-y-16">
+
+        <!-- Overview -->
+        <div class="timeline-section">
+          <div class="timeline-line"><div class="timeline-pad"></div></div>
+          <div class="timeline-content">
+            <h2 class="text-2xl font-semibold mb-4">Overview</h2>
+            <ul class="space-y-3 list-none">
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  48-hour hackathon organized by SensAI with Meta, Unity, and partners. Theme: "AI with Camera Access".
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  Our team built an XR car-repair assistant running on <strong>Meta Quest 3</strong>: point the headset at a car engine and get a visual, interactive repair tutorial for each part you see.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  Won <strong>First Place</strong>, recognized by Meta, Unity, and the partner companies.
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- The App -->
+        <div class="timeline-section">
+          <div class="timeline-line"><div class="timeline-pad"></div></div>
+          <div class="timeline-content">
+            <h2 class="text-2xl font-semibold mb-4">1) The App</h2>
+            <ul class="space-y-3 list-none">
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  The user wears a Meta Quest 3 headset and looks at a car engine. The app detects and segments the individual motor parts in real time using the passthrough camera.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  The user reaches out with their hand and presses a detected part. A repair tutorial for that specific component appears as an overlay, directly in their field of view.
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Computer Vision -->
+        <div class="timeline-section">
+          <div class="timeline-line"><div class="timeline-pad"></div></div>
+          <div class="timeline-content">
+            <h2 class="text-2xl font-semibold mb-4">2) Computer Vision — My Contribution</h2>
+            <ul class="space-y-3 list-none">
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  Responsible for the full computer vision pipeline, built within the 48-hour window.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  <strong>Labeling:</strong> manually annotated images of car engine parts with segmentation masks to create the training dataset.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  <strong>Training:</strong> trained an instance segmentation model on <strong>Roboflow</strong> to detect and outline each part by category.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  <strong>Deployment:</strong> integrated the trained model into the Unity app via the Roboflow API, running inference on the Meta Quest 3 passthrough camera feed in real time.
+                </span>
+              </li>
+            </ul>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+              <div>
+                <img
+                  src="../assets/images/projects/SensAI/Demo.png"
+                  alt="SensAI hackathon - app demo or team"
+                  class="rounded-lg shadow-lg w-full"
+                />
+              </div>
+              <div>
+                <img
+                  src="../assets/images/projects/SensAI/sensai_win.jpeg"
+                  alt="SensAI hackathon - detection results or award"
+                  class="rounded-lg shadow-lg w-full"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recognition -->
+        <div class="timeline-section">
+          <div class="timeline-line"><div class="timeline-pad"></div></div>
+          <div class="timeline-content">
+            <h2 class="text-2xl font-semibold mb-4">3) Recognition</h2>
+            <ul class="space-y-3 list-none mb-6">
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>
+                  The project was featured by SensAI, Meta, and Unity after the hackathon.
+                </span>
+              </li>
+            </ul>
+
+            <div class="flex flex-wrap gap-3">
+              <a
+                href="https://www.linkedin.com/feed/update/urn:li:activity:7397590650034155521/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span class="tag-label" style="background:#0a66c2;color:#fff;">LinkedIn — Post 1</span>
+              </a>
+              <a
+                href="https://www.linkedin.com/feed/update/urn:li:activity:7397381646263640064/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span class="tag-label" style="background:#0a66c2;color:#fff;">LinkedIn — Post 2</span>
+              </a>
+              <a
+                href="https://www.youtube.com/watch?v=8-F2Ac9t3I0&list=LL&index=2"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span class="tag-label" style="background:#0a66c2;color:#fff;">Demo (Youtube)</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- What I Did -->
+        <div class="timeline-section">
+          <div class="timeline-line"><div class="timeline-pad"></div></div>
+          <div class="timeline-content">
+            <h2 class="text-2xl font-semibold mb-4">My Contribution</h2>
+            <ul class="space-y-3 list-none">
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>Collected and labeled car engine images with segmentation masks.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>Trained an instance segmentation model on Roboflow within the 48-hour window.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="timeline-dot"></div>
+                <span>Deployed the model and integrated it into the Unity XR app running on Meta Quest 3.</span>
+              </li>
+            </ul>
+
+            <div class="mt-6">
+              <p class="font-semibold mb-2">Tech Stack</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="tag-label">Unity</span>
+                <span class="tag-label">C#</span>
+                <span class="tag-label">Meta Quest 3</span>
+                <span class="tag-label">Roboflow</span>
+                <span class="tag-label">Instance Segmentation</span>
+                <span class="tag-label">XR</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <div class="max-w-4xl mx-auto flex flex-col items-center justify-center gap-2 text-center pb-10">
+      <p class="text-sm">© 2026 Chris KY - Built with Passion</p>
+    </div>
+
+    <script src="../assets/js/script.js"></script>
+  </body>
+</html>
